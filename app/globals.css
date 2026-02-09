@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0f0f0f;
+  --foreground: #e0e0e0;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- WEB VIEW --- */
+.snap-container {
+  height: calc(100vh - 53px);
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+.snap-slide {
+  height: calc(100vh - 53px);
+  width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+.snap-container::-webkit-scrollbar { display: none; }
+
+/* --- PRINT VIEW --- */
+@media print {
+  @page {
+    size: 375px 812px;
+    margin: 0;
+  }
+  html, body {
+    overflow: visible !important;
+    height: auto !important;
+    background: white !important;
+  }
+  .snap-container {
+    display: block !important;
+    overflow: visible !important;
+    height: auto !important;
+    scroll-snap-type: none !important;
+    margin: 0 !important;
+  }
+  .snap-slide {
+    display: flex !important;
+    height: 812px !important;
+    width: 375px !important;
+    break-after: page !important;
+    page-break-after: always !important;
+    overflow: hidden !important;
+  }
+}
+
