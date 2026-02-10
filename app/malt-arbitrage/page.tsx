@@ -14,6 +14,20 @@ export default function TechnicalStrategicDossier() {
   return (
     <div className="bg-slate-900 font-sans text-slate-900 antialiased h-screen overflow-hidden print:h-auto print:overflow-visible print:bg-white">
 
+      {/* FORCE PRINT SIZE: Junior Legal (5x8) & Background Colors */}
+      <style>{`
+        @media print {
+          @page {
+            size: 5in 8in;
+            margin: 0mm;
+          }
+          body {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+          }
+        }
+      `}</style>
+
       <header className="h-[53px] fixed top-0 left-0 right-0 z-50 flex items-center justify-between bg-slate-900 px-4 text-white border-b border-slate-800 print:hidden">
         <div className="flex flex-col">
           <h1 className="text-sm font-black tracking-tight text-amber-500 italic leading-none uppercase">Strategic Dossier</h1>
