@@ -29,139 +29,174 @@ export default function TechnicalStrategicDossier() {
 
         {/* PILLAR I: THE MACRO THESIS */}
         
-        {/* 01. EXECUTIVE SUMMARY */}
-        <section className="snap-slide flex flex-col justify-between p-6 bg-white border-b border-slate-200">
+        {/* 01. EXECUTIVE BRIEFING */}
+        <section className="snap-slide relative flex flex-col justify-between p-6 bg-white border-b border-slate-200">
           <div>
-            <span className="text-amber-600 font-black text-[10px] uppercase tracking-widest italic block mb-2 underline decoration-2 underline-offset-4">Volume I: The Macro Thesis</span>
-            <h2 className="text-[34px] font-black text-slate-900 leading-[0.85] tracking-tighter mb-4 italic">Fractional <br/>Arbitrage.</h2>
-            <p className="text-xs text-slate-600 leading-relaxed mb-6">Capturing the <b>"Glitch"</b>: Buying $15.00/kg of technical value for $3.00/kg by isolating high-spec discharge from the Heineken/Modelo duopoly.</p>
-            <div className="grid grid-cols-2 gap-2 mt-4">
-              <div className="p-4 bg-slate-900 rounded-xl text-white">
-                <p className="text-[8px] font-bold text-slate-500 uppercase mb-1">Target GP</p>
-                <p className="text-xl font-black italic">$385.9M<span className="text-[10px] block opacity-50">MXN / Year</span></p>
-              </div>
-              <div className="p-4 bg-amber-500 rounded-xl text-slate-900">
-                <p className="text-[8px] font-black text-amber-900 uppercase mb-1">Avg. Margin</p>
-                <p className="text-xl font-black italic">~63%<span className="text-[10px] block opacity-70 italic">Post-Adj.</span></p>
-              </div>
+            <span className="text-amber-600 font-black text-[11px] uppercase tracking-[0.2em] italic block mb-2 underline decoration-4 underline-offset-8">Executive Briefing</span>
+            <h2 className="text-[44px] font-black text-slate-900 leading-[0.8] tracking-tighter mb-8 italic mt-4">Fractional <br/>Arbitrage.</h2>
+            <div className="space-y-6 mt-10">
+              {[ {t:"Feedstock Alpha", d:"18,000 tons of high-protein enzymatic malt locked at 80% market discount."},
+                 {t:"Spec-Parity Protocol", d:"1:1 CoA matching for Diastatic Power & Protein. No formulation risk."},
+                 {t:"Indestructible Margin", d:"$17.32 MXN weighted spread provides a dominant price-leadership floor."},
+                 {t:"Supply Velocity", d:"Displacing 15-day 'Border Lag' with 24-hr domestic JIT delivery."} ].map((item, i) => (
+                <div key={i} className="flex gap-4 items-start border-l-4 border-amber-500 pl-4">
+                  <div><p className="text-[12px] font-black uppercase text-slate-900 leading-none mb-1.5 italic tracking-tight">{item.t}</p><p className="text-[11px] text-slate-500 italic leading-snug">{item.d}</p></div>
+                </div>
+              ))}
             </div>
           </div>
-          <p className="text-[9px] text-slate-400 font-bold uppercase tracking-widest border-t border-slate-100 pt-4 italic text-center">Proprietary Strategic Framework</p>
+          <div className="flex justify-between items-center border-t border-slate-100 pt-6">
+             <p className="text-[11px] font-black text-slate-400 italic">PROSPECTUS VOL. I</p>
+             <div className="text-right"><p className="text-[12px] font-black text-slate-900">$385.9M MXN</p><p className="text-[9px] text-slate-400 uppercase font-black">Annual GP Target</p></div>
+          </div>
         </section>
 
-        {/* 02. THE STRUCTURAL MARKET GAP */}
+        {/* 02. INDUSTRIAL DEMAND (481K TON EQUIVALENCE) */}
         <section className="snap-slide flex flex-col justify-between p-6 bg-slate-50 border-b border-slate-200">
           <div>
-            <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-4 border-b border-slate-200 pb-2">02. The Merchant Desert</h3>
-            <p className="text-[11px] text-slate-600 mb-4 italic leading-tight">Mexico produces 1M+ tons of malt for beer, but <b>zero tons</b> for the domestic technical market.</p>
-            <div className="overflow-hidden rounded-xl border border-slate-200 shadow-sm bg-white">
-              <table className="w-full text-[9px] text-left">
-                <thead className="bg-slate-900 text-white font-black italic uppercase">
-                  <tr><th className="p-2">Segment</th><th className="p-2 text-right">Nat. Demand (T)</th></tr>
-                </thead>
-                <tbody className="divide-y divide-slate-100 font-bold text-slate-700">
-                  <tr><td className="p-2">Ind. Baking</td><td className="p-2 text-right">85,000</td></tr>
-                  <tr><td className="p-2">Instant Bev.</td><td className="p-2 text-right">30,000</td></tr>
-                  <tr><td className="p-2">Distilling</td><td className="p-2 text-right">40,000</td></tr>
-                  <tr className="bg-amber-50 text-slate-900"><td className="p-2 italic">Total Merchant</td><td className="p-2 text-right italic font-black">457,002</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div className="p-3 bg-white rounded-xl border border-slate-200 shadow-inner"><p className="text-[9px] text-slate-500 leading-tight italic">Our 18k ton intake represents a mere <b>3.9%</b> capture of an unserved $10B MXN market.</p></div>
-        </section>
-
-        {/* 03. THE 150 BPS WATERFALL */}
-        <section className="snap-slide flex flex-col justify-between p-6 bg-white border-b border-slate-200">
-          <div>
-            <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-6 border-b border-slate-100 pb-2">03. The Invisible Import Tax</h3>
-            <h4 className="text-xl font-black text-slate-900 italic mb-6">The EBITDA Waterfall.</h4>
-            <div className="space-y-4">
-              <div className="flex justify-between items-center text-xs font-bold border-b border-slate-100 pb-2">
-                <span className="text-slate-500 uppercase tracking-tighter">BOM Price Reduction</span>
-                <span className="text-amber-600">+80 bps</span>
-              </div>
-              <div className="flex justify-between items-center text-xs font-bold border-b border-slate-100 pb-2">
-                <span className="text-slate-500 uppercase tracking-tighter">FX Hedging Offset (USD)</span>
-                <span className="text-amber-600">+40 bps</span>
-              </div>
-              <div className="flex justify-between items-center text-xs font-bold border-b border-slate-100 pb-2">
-                <span className="text-slate-500 uppercase tracking-tighter">Inventory Velocity (JIT)</span>
-                <span className="text-amber-600">+30 bps</span>
-              </div>
-              <div className="p-4 bg-slate-900 rounded-xl text-center shadow-lg">
-                <p className="text-[10px] font-black text-amber-500 uppercase tracking-widest italic mb-1">Total Client Alpha</p>
-                <p className="text-2xl font-black text-white italic">150 bps EBITDA Gain</p>
-              </div>
-            </div>
-          </div>
-          <p className="text-[9px] text-slate-400 italic">Displacing the 15-day Border Lag with 24-hour domestic delivery.</p>
-        </section>
-
-        {/* PILLAR II: MARKET INTELLIGENCE */}
-
-        {/* 04. SEGMENT MERITOCRACY */}
-        <section className="snap-slide flex flex-col justify-between p-6 bg-slate-50 border-b border-slate-200">
-          <div>
-            <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-6 border-b border-slate-200 pb-2 underline decoration-amber-500">04. Segment Meritocracy</h3>
+            <h3 className="text-[32px] font-black text-slate-900 italic leading-[0.85] mb-6 tracking-tighter">480,630 Tons <br/><span className="text-slate-400 font-normal text-[24px]">Equivalent Demand</span></h3>
             <div className="space-y-3">
-              {SEGMENTS.map((s, idx) => (
-                <div key={idx} className="bg-white p-3 rounded-lg border border-slate-200 flex justify-between items-center shadow-sm">
+              {[ {f:"Group A: Whole Grain", e:"181,818", s:["Bev. Extraction", "Cereals", "Vinegar"]},
+                 {f:"Group C: Standard Flour", e:"119,618", s:["Industrial Baking", "Pet Health"]},
+                 {f:"Group B: Crushed Grits", e:"96,591", s:["Spirits", "Animal Health", "Bars"]},
+                 {f:"Group D: Fine Flour", e:"64,566", s:["Instant Bev", "Confectionery"]},
+                 {f:"Group E: Roasted Flour", e:"18,038", s:["Specialty Colorants"]} ].map((group, i) => (
+                <div key={i} className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm">
+                  <div className="flex justify-between items-center mb-1">
+                    <p className="text-[12px] font-black text-slate-900 italic">{group.f}</p>
+                    <p className="text-[11px] font-black text-amber-600 italic">{group.e} T</p>
+                  </div>
+                  <div className="flex flex-wrap gap-x-2 gap-y-1">
+                    {group.s.map((s, j) => (
+                      <span key={j} className="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">/ {s}</span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="bg-slate-900 p-4 rounded-xl text-white shadow-xl flex justify-between items-center">
+             <p className="text-[11px] font-black text-amber-500 italic tracking-tighter">Unserved Market Cap</p>
+             <p className="text-[14px] font-black italic">$10.2 Billion MXN</p>
+          </div>
+        </section>
+
+        {/* 03. THE TECHNICAL USP */}
+        <section className="snap-slide flex flex-col justify-between p-6 bg-white border-b border-slate-200 text-center">
+          <div>
+            <h3 className="text-sm font-black text-slate-400 uppercase tracking-widest mb-10 border-b border-slate-100 pb-2">03. The Technical USP</h3>
+            <h4 className="text-[40px] font-black text-slate-900 italic leading-[0.9] mb-6">"The Enzymatic <br/>Engine."</h4>
+            <p className="text-[16px] text-slate-500 italic leading-relaxed px-4 mb-10">Unlike standard brewing malt, B-Grade protein density (&gt;12%) creates a <span className="text-slate-900 font-black">superior functional precursor</span> for technical applications.</p>
+            <div className="grid grid-cols-1 gap-4 text-left">
+              {[ {s:"Baking", v:"Higher Maillard Precursors (FAN)", d:"Intense browning & faster yeast feeding."},
+                 {s:"Distilling", v:"Maximized Diastatic Power", d:"15% higher enzymatic conversion than brewing grade."},
+                 {s:"Beverage", v:"Enhanced Nutrient Density", d:"Clean mouthfeel with higher malt-solid solubility."} ].map((usp, i) => (
+                <div key={i} className="p-4 bg-slate-50 rounded-2xl border-l-8 border-amber-500 shadow-sm">
+                  <p className="text-[12px] font-black text-slate-900 italic leading-none mb-1">{usp.s}: {usp.v}</p>
+                  <p className="text-[11px] text-slate-500 italic leading-tight">{usp.d}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="mt-8 bg-slate-900 p-4 rounded-full text-white"><p className="text-[12px] font-black italic">Strategic Pricing: 20% Discount vs. Landed US Imports</p></div>
+        </section>
+
+        {/* 04. OPERATIONAL GATES (VALUE-ADD) */}
+        <section className="snap-slide flex flex-col justify-between p-6 bg-slate-50 border-b border-slate-200">
+          <div>
+            <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-6 border-b border-slate-200 pb-2">04. Operational Value Gates</h3>
+            <div className="space-y-6">
+              {[ {g:"Gate 1: Pre-Refinement", o:"Scalping / Drying / Aspiration", u:"Unlocks Shelf Stability & Clean Stream."},
+                 {g:"Gate 2: Fractionation", o:"Indented Separation / De-stoning", u:"Unlocks SKU Diversity (Wholes vs Pieces)."},
+                 {g:"Gate 3: Finishing", o:"Fine Milling / Precision Roasting", u:"Unlocks Premium Technical Margins."} ].map((gate, i) => (
+                <div key={i} className="relative pl-10 border-l-2 border-slate-200 pb-2">
+                  <div className="absolute -left-3 top-0 w-6 h-6 bg-amber-500 rounded-full flex items-center justify-center font-black text-white text-[10px] italic shadow-lg">{i+1}</div>
+                  <p className="text-[14px] font-black text-slate-900 italic leading-none mb-1.5">{gate.g}</p>
+                  <p className="text-[11px] font-bold text-slate-500 uppercase tracking-tighter mb-2">{gate.o}</p>
+                  <p className="text-[11px] text-amber-600 italic font-black">{gate.u}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <p className="text-[11px] italic text-slate-400 text-center font-bold border-t border-slate-100 pt-4">Process logic maximizes the extraction of the $17.32 MXN spread.</p>
+        </section>
+
+        {/* 05. THE STRATEGIC SHIELD */}
+        <section className="snap-slide flex flex-col justify-between p-6 bg-slate-900 text-white border-b border-slate-800">
+          <div>
+            <h3 className="text-xs font-black text-amber-500 uppercase tracking-widest mb-10 border-b border-slate-800 pb-2">05. The Strategic Shield</h3>
+            <div className="space-y-8 mt-4">
+              {[ {t:"The Border Moat", d:"Rising US labor & rail costs are inflating the 'Landed Import Parity'. Our domestic Chihuahua-MTY-GDL loop is immune."},
+                 {t:"Inventory Liquidity", d:"Our 24-hr lead time allows Tier-1 clients to reduce safety stock from 21 days to 3 days, releasing millions in working capital."},
+                 {t:"Institutional Lock", d:"Once CoA equivalency is validated in the client's BOM, we become a 'Hard-Coded' ingredient, creating high switching costs."} ].map((moat, i) => (
+                <div key={i} className="flex gap-4 items-start">
+                   <div className="text-3xl font-black italic opacity-20 text-white leading-none">{i+1}</div>
                    <div>
-                      <p className="text-[10px] font-black text-slate-900 italic leading-none mb-1">{s.segment}</p>
-                      <p className="text-[8px] text-slate-400 font-bold uppercase">{s.sku}</p>
-                   </div>
-                   <div className="text-right">
-                      <p className="text-sm font-black text-amber-600">${s.adjProfit}</p>
-                      <p className="text-[8px] text-slate-400 font-bold uppercase tracking-tighter">Adj. Profit / kg</p>
+                      <p className="text-[14px] font-black text-white italic leading-none mb-2">{moat.t}</p>
+                      <p className="text-[12px] text-slate-400 leading-snug italic">{moat.d}</p>
                    </div>
                 </div>
               ))}
             </div>
           </div>
-          <p className="text-[9px] italic text-slate-400 text-center">Prioritizing the <b>Technical Engine</b> over the Commodity Sink.</p>
+          <div className="mt-auto p-4 bg-white rounded-2xl text-slate-900 text-center shadow-2xl"><p className="text-[12px] font-black italic uppercase italic">"Budget Certainty in a Volatile Landscape."</p></div>
         </section>
 
-        {/* 05. INCUMBENT DISPLACEMENT MAP */}
+        {/* 06. THE MASS WATERFALL */}
         <section className="snap-slide flex flex-col justify-between p-6 bg-white border-b border-slate-200">
           <div>
-            <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-6 border-b border-slate-100 pb-2">05. Displacement Map</h3>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="p-4 bg-slate-100 rounded-2xl border border-slate-200">
-                <p className="text-[9px] font-black text-slate-500 uppercase mb-2">The Importers</p>
-                <ul className="text-[10px] font-bold text-slate-800 space-y-1 italic">
-                  <li>● Briess (USA)</li>
-                  <li>● Malteurop (EU)</li>
-                  <li>● Rahr (CAN)</li>
-                </ul>
-              </div>
-              <div className="p-4 bg-slate-900 rounded-2xl border border-slate-800 shadow-xl">
-                <p className="text-[9px] font-black text-amber-500 uppercase mb-2">Our Shield</p>
-                <p className="text-[10px] text-slate-300 leading-tight italic">MXN-Denominated technical alternatives with zero customs friction.</p>
-              </div>
-            </div>
-          </div>
-          <div className="mt-8 bg-amber-50 p-4 border-2 border-dashed border-amber-300 rounded-xl">
-            <p className="text-[10px] font-black text-amber-900 text-center uppercase tracking-widest italic leading-tight">Total Yield Efficiency Target: 92% Across Priority Streams</p>
-          </div>
-        </section>
+            <h3 className="text-sm font-black text-slate-400 uppercase tracking-widest mb-6 border-b border-slate-100 pb-2">06. Industrial Transformation</h3>
+            <div className="space-y-2">
+              {[ {l:"Intake: B-Grade Malt", v:1000, c:"bg-slate-900", d:""},
+                 {l:"Scalping: Coarse Trash", v:990, c:"bg-slate-900", d:"-1% Loss"},
+                 {l:"Aspiration: Dust/Sprouts", v:940, c:"bg-slate-900", d:"-5% Salvage"},
+                 {l:"Drying: Brittle Fracture", v:900, c:"bg-slate-900", d:"-4% Humidity"},
+                 {l:"Safety Gate: Stones/Metal", v:880, c:"bg-slate-900", d:"-2% Loss"} ].map((step, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <div className={`h-6 ${step.c} rounded-r flex items-center justify-end px-3 font-black text-[10px] text-white italic transition-all`} style={{width: `${step.v/11}%`}}>{step.v}kg</div>
+                  <div className="flex-1 flex justify-between items-center pr-2"><span className="text-[10px] font-black italic text-slate-900 leading-none">{step.l}</span><span className="text-[9px] font-bold text-slate-400 italic">{step.d}</span></div>
+                </div>
+              ))}
+              
+              <div className="mt-8 pt-4 border-t-2 border-slate-100 relative">
+                 <div className="absolute -top-3 left-0 bg-white px-2 text-[10px] font-black text-amber-600 italic tracking-widest uppercase">Strategic Yield Paths</div>
+                 
+                 <div className="space-y-5 mt-4">
+                    {/* PATH A: STANDARD FLOUR */}
+                    <div className="space-y-1">
+                      <div className="flex justify-between items-end"><p className="text-[9px] font-black text-slate-900 uppercase italic tracking-tighter">Path A: Standard Flour (Full Stream)</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">95% Prod. Yield</p></div>
+                      <div className="h-8 bg-slate-900 rounded-r flex items-center justify-center font-black text-[11px] text-white italic shadow-sm transition-all" style={{width: '76%'}}>
+                        836kg OUTPUT
+                      </div>
+                    </div>
 
-        {/* 06. MASS-BALANCE DYNAMICS */}
-        <section className="snap-slide flex flex-col justify-between p-6 bg-white">
-          <div>
-            <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-6 border-b border-slate-100 pb-2">06. Intake Reconciliation</h3>
-            <div className="space-y-3">
-               <div className="h-6 w-full bg-slate-100 rounded-full overflow-hidden flex font-black text-[8px] text-white">
-                  <div className="h-full bg-slate-900 flex items-center justify-center italic" style={{width: '70%'}}>WHOLE (12.6k T)</div>
-                  <div className="h-full bg-amber-500 flex items-center justify-center italic text-slate-900" style={{width: '22%'}}>FLOUR (3.9k T)</div>
-                  <div className="h-full bg-slate-400 flex items-center justify-center italic" style={{width: '8%'}}>SALVAGE</div>
-               </div>
-               <div className="p-4 border-l-4 border-slate-900 bg-slate-50 italic">
-                  <p className="text-xs text-slate-600 leading-relaxed">The 18,000-ton intake is fractionated based on <b>Kernel Integrity</b>. "Broken Pieces" are not waste; they are the feedstock for High-Alpha Standard Flour (C).</p>
-               </div>
+                    {/* PATH B: FINE FLOUR */}
+                    <div className="space-y-1">
+                      <div className="flex justify-between items-end"><p className="text-[9px] font-black text-slate-900 uppercase italic tracking-tighter">Path B: Fine Flour (Full Stream)</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">88% Prod. Yield</p></div>
+                      <div className="h-8 bg-slate-700 rounded-r flex items-center justify-center font-black text-[11px] text-white italic shadow-sm transition-all" style={{width: '70%'}}>
+                        774kg OUTPUT
+                      </div>
+                    </div>
+
+                    {/* PATH C: ROASTED + FINE */}
+                    <div className="space-y-1">
+                      <div className="flex justify-between items-end"><p className="text-[9px] font-black text-slate-900 uppercase italic tracking-tighter">Path C: Specialty Roast (Split Stream)</p><p className="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">84% Whole / 88% Pieces</p></div>
+                      <div className="flex h-8 rounded-r overflow-hidden font-black text-[10px] text-white italic shadow-sm" style={{width: '68%'}}>
+                        <div className="h-full bg-amber-600 flex items-center justify-center border-r border-white/20" style={{width: '75%'}}>563kg ROASTED</div>
+                        <div className="h-full bg-amber-400 flex items-center justify-center text-slate-900 italic" style={{width: '25%'}}>185kg FINE</div>
+                      </div>
+                    </div>
+                 </div>
+
+                 <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl mt-6">
+                    <p className="text-[10px] font-bold text-slate-500 italic text-center leading-tight tracking-tighter">
+                      Path Selection is dynamic based on <span className="text-slate-900">Highest Adjusted Profitability ($/Supply-kg)</span> at time of processing.
+                    </p>
+                 </div>
+              </div>
             </div>
           </div>
-          <p className="text-[10px] italic text-slate-400">Volume VII: Mass-Balance & Industrial Shrinkage.</p>
+          <p className="text-[11px] italic text-slate-500 text-center font-black mt-auto underline decoration-amber-500 decoration-2">Volume VII: The Physics of Industrial Transformation.</p>
         </section>
 
         {/* PILLAR III: TECHNICAL PHYSICS */}
