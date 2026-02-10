@@ -27,6 +27,7 @@ body {
 .snap-slide {
   height: calc(100vh - 53px);
   width: 100%;
+  padding-bottom: 60px;
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
