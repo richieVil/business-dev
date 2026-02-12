@@ -12,7 +12,7 @@ const SEGMENTS = [
 
 export default function TechnicalStrategicDossier() {
   return (
-    <div className="bg-slate-900 font-sans text-slate-900 antialiased h-screen overflow-hidden print:h-auto print:overflow-visible print:bg-white">
+    <div className="font-sans text-slate-900 antialiased h-screen overflow-hidden print:h-auto print:overflow-visible print:bg-white">
 
       {/* FORCE PRINT SIZE: Junior Legal (5x8) & Background Colors */}
       <style>{`

@@ -1,15 +1,11 @@
 @import "tailwindcss";
 
-:root {
-  --portal-bg: #0f0f0f;
-  --portal-text: #e0e0e0;
-}
-
-.portal-root {
-  background-color: #0f0f0f;
-  color: #e0e0e0;
+.agave-root {
+  background-color: #f2efe9;
+  color: #1a1a1a;
   min-height: 100vh;
   width: 100%;
+  display: block;
 }
 
 body {
@@ -19,8 +15,6 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow: hidden;
   height: 100vh;
-  margin: 0;
-  padding: 0;
 }
 
 /* --- WEB VIEW --- */
@@ -67,4 +61,3 @@ body {
     overflow: hidden !important;
   }
 }
-
