@@ -567,25 +567,50 @@ export default function CbarTechnicalDossier() {
       )
     },
     {
+      id: 'S21',
       phase: 'FASE VI',
-      title: 'Arbitraje de\nSetup Fee',
-      label: 'Financiamiento de Capital',
-      render: () => (
-        <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-           <div style={{ ...cardStyle, background: 'rgba(34, 197, 94, 0.05)', borderColor: 'rgba(34, 197, 94, 0.3)' }}>
-              <div style={{ fontSize: '9px', fontWeight: 700, color: '#22c55e', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '8px' }}>Financiamiento Interno</div>
-              <div style={{ fontSize: '14px', fontWeight: 700, color: 'var(--ink)', marginBottom: '4px' }}>Setup Fee ($5k)</div>
-              <div style={{ fontSize: '10px', fontFamily: 'Roboto Mono', color: '#22c55e' }}>
-                 El cobro inicial de "Auditoría Histórica" financia 3 meses de sueldo del Ingeniero Jr. antes de que empiece a trabajar.
+      title: 'Arquitectura\nP&L',
+      label: 'Escenarios de Rentabilidad (Año 1)',
+      render: () => {
+        const pnlData = [
+          { metric: 'Revenue', c1: '$24k', c10: '$240k', c30: '$720k', isHeader: true },
+          { metric: 'COGS (Cloud)', c1: '($1k)', c10: '($10k)', c30: '($32k)', isHeader: false },
+          { metric: 'Gross Margin', c1: '$23k', c10: '$230k', c30: '$688k', isHeader: true },
+          { metric: 'OPEX (Fixed)', c1: '($18k)', c10: '($18k)', c30: '($18k)', isHeader: false },
+          { metric: 'EBITDA', c1: '$5k', c10: '$212k', c30: '$670k', isHeader: true, isFinal: true },
+        ];
+        return (
+          <div style={{ fontFamily: 'Roboto Mono, monospace' }}>
+            {/* Header */}
+            <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: '8px', borderBottom: '1px solid var(--muted)', paddingBottom: '8px' }}>
+              <span style={{ fontSize: '9px', fontWeight: 700, color: 'var(--muted)' }}>MÉTRICA</span>
+              <span style={{ fontSize: '9px', fontWeight: 700, color: 'var(--muted)', textAlign: 'right' }}>1 CLIENTE</span>
+              <span style={{ fontSize: '9px', fontWeight: 700, color: 'var(--muted)', textAlign: 'right' }}>10</span>
+              <span style={{ fontSize: '9px', fontWeight: 700, color: 'var(--muted)', textAlign: 'right' }}>30</span>
+            </div>
+            {/* Rows */}
+            {pnlData.map((row) => (
+              <div key={row.metric} style={{ 
+                display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: '8px', 
+                padding: '10px 0', borderBottom: `1px solid ${row.isFinal ? 'var(--accent)' : 'rgba(255,255,255,0.1)'}`,
+                color: row.isHeader ? 'var(--ink)' : 'var(--muted)',
+                fontWeight: row.isHeader ? 700 : 400
+              }}>
+                <span style={{ fontSize: '10px' }}>{row.metric}</span>
+                <span style={{ fontSize: '10px', textAlign: 'right', color: row.metric === 'EBITDA' ? '#22c55e' : 'inherit' }}>{row.c1}</span>
+                <span style={{ fontSize: '10px', textAlign: 'right', color: row.metric === 'EBITDA' ? '#22c55e' : 'inherit' }}>{row.c10}</span>
+                <span style={{ fontSize: '10px', textAlign: 'right', color: row.metric === 'EBITDA' ? '#22c55e' : 'inherit' }}>{row.c30}</span>
               </div>
-           </div>
-           <div style={{ marginTop: 'auto', fontSize: '10px', fontFamily: 'Roboto Mono', color: 'var(--muted)', textAlign: 'center' }}>
-              "Negative Working Capital desde el Día 1."
-           </div>
-        </div>
-      )
+            ))}
+            <div style={{ fontSize: '9px', color: 'var(--muted)', marginTop: '16px', fontStyle: 'italic' }}>
+              *OPEX Fijo basado en 1 Ingeniero Jr. que puede gestionar hasta 30 clientes (apalancamiento operativo).
+            </div>
+          </div>
+        )
+      }
     },
     {
+      id: 'S22',
       phase: 'FASE VI',
       title: 'Valle de la\nMuerte',
       label: 'Flujo de Caja Negativo',
@@ -615,6 +640,7 @@ export default function CbarTechnicalDossier() {
 
     // --- PHASE VII: EXECUTION & EXIT ---
     {
+      id: 'S23',
       phase: 'FASE VII',
       title: 'Motor de\nVentas',
       label: 'Estrategia Trojan Horse',
