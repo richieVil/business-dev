@@ -780,36 +780,52 @@ export default function AgaveTechnicalDossier() {
               </div>
             ) : slide.id === 'S13' ? (
               <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-                <p style={{ fontSize: '13px', lineHeight: '1.25', color: 'var(--ink)', marginBottom: '12px' }}>
-                  Operamos con un modelo <strong>"asset-light"</strong>. No invertimos en infraestructura; invertimos en asegurar y controlar el proceso de producción artesanal.
+                <p style={{ fontSize: '13px', lineHeight: '1.25', color: 'var(--ink)', marginBottom: '8px' }}>
+                  Mitigación de riesgo mediante una <strong>Red Multi-Palenque</strong>. No dependemos de un solo productor; construimos un ecosistema de calidad verificada.
                 </p>
 
-                {/* Card 1: Sourcing */}
+                {/* Multi-Producer Logic */}
                 <div className="data-card" style={{ padding: '8px', background: '#fff', borderLeft: '4px solid var(--terracotta)', marginBottom: '8px' }}>
-                  <div style={{ fontSize: '9px', fontWeight: 700, color: 'var(--terracotta)', marginBottom: '4px', fontFamily: 'Roboto Mono' }}>SOURCING & VINCULACIÓN</div>
-                  <div style={{ fontSize: '11px', fontWeight: 900, marginBottom: '2px' }}>Alianza con Palenques Certificados</div>
-                  <div style={{ fontSize: '9px', color: 'var(--muted)', lineHeight: '1.2' }}>
-                    Aseguramos el suministro mediante un <strong>Contrato de Corresponsalía</strong> que garantiza la exclusividad de lotes y perfiles sensoriales.
-                  </div>
-                </div>
-                
-                {/* Card 2: Quality Control */}
-                <div className="data-card" style={{ padding: '8px', background: '#fff', borderLeft: '4px solid var(--ink)', marginBottom: '12px' }}>
-                  <div style={{ fontSize: '9px', fontWeight: 700, color: 'var(--ink)', marginBottom: '4px', fontFamily: 'Roboto Mono' }}>CONTROL DE CALIDAD</div>
-                  <div style={{ fontSize: '11px', fontWeight: 900, marginBottom: '2px' }}>Supervisión por Master Blender</div>
-                  <div style={{ fontSize: '9px', color: 'var(--muted)', lineHeight: '1.2' }}>
-                    Un experto independiente certifica la consistencia de cada lote, asegurando que el perfil de sabor cumpla con nuestros estándares antes de cada pago.
+                  <div style={{ fontSize: '9px', fontWeight: 700, color: 'var(--terracotta)', marginBottom: '4px', fontFamily: 'Roboto Mono' }}>ESTRATEGIA DE SUMINISTRO</div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                     <div style={{ flex: 1 }}>
+                        <div style={{ fontSize: '11px', fontWeight: 900 }}>Network de 3-4 Palenques</div>
+                        <div style={{ fontSize: '8px', color: 'var(--muted)', lineHeight: '1.2' }}>Diversificación de origen para garantizar volumen y complejidad de sabor (Blending).</div>
+                     </div>
+                     <div style={{ textAlign: 'right', marginLeft: '12px' }}>
+                        <div style={{ fontSize: '18px', fontWeight: 900, color: 'var(--ink)' }}>RESILIENCIA</div>
+                     </div>
                   </div>
                 </div>
 
-                {/* Empty space to push footer down */}
-                <div style={{ flex: 1 }}></div>
+                {/* Vetting Protocol Card */}
+                <div className="data-card" style={{ padding: '8px', background: 'var(--ink)', color: 'white', marginBottom: '10px' }}>
+                  <div style={{ fontSize: '8px', fontWeight: 900, color: 'var(--terracotta)', marginBottom: '6px', textTransform: 'uppercase' }}>Protocolo de Vetting (4 Filtros)</div>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+                    <div style={{ borderBottom: '1px solid #334155', paddingBottom: '4px' }}>
+                      <div style={{ fontSize: '10px', fontWeight: 900, color: 'var(--terracotta)' }}>1. LEGAL</div>
+                      <div style={{ fontSize: '7px', color: '#94a3b8' }}>Status NOM y Padrón.</div>
+                    </div>
+                    <div style={{ borderBottom: '1px solid #334155', paddingBottom: '4px' }}>
+                      <div style={{ fontSize: '10px', fontWeight: 900, color: 'var(--terracotta)' }}>2. QUÍMICO</div>
+                      <div style={{ fontSize: '7px', color: '#94a3b8' }}>Cromatografía Gas.</div>
+                    </div>
+                    <div>
+                      <div style={{ fontSize: '10px', fontWeight: 900, color: 'var(--terracotta)' }}>3. CAMPO</div>
+                      <div style={{ fontSize: '7px', color: '#94a3b8' }}>Auditoría de Agave.</div>
+                    </div>
+                    <div>
+                      <div style={{ fontSize: '10px', fontWeight: 900, color: 'var(--terracotta)' }}>4. BLENDING</div>
+                      <div style={{ fontSize: '7px', color: '#94a3b8' }}>Certificación Sensorial.</div>
+                    </div>
+                  </div>
+                </div>
 
-                {/* Strategic Value */}
-                <div style={{ background: 'var(--ink)', borderRadius: '12px', padding: '12px', color: 'white', marginTop: 'auto' }}>
-                  <div style={{ fontSize: '9px', fontWeight: 700, color: 'var(--terracotta)', marginBottom: '4px', fontFamily: 'Roboto Mono' }}>VALOR ESTRATÉGICO</div>
-                  <p style={{ fontSize: '10px', color: '#cbd5e1', lineHeight: '1.3', margin: 0 }}>
-                    <strong>Escalabilidad sin CAPEX.</strong> Podemos duplicar la producción anual sin invertir en un solo alambique de cobre, apalancando la capacidad instalada de nuestros socios.
+                {/* The Gatekeeper Role */}
+                <div style={{ marginTop: 'auto', borderLeft: '3px solid var(--ink)', paddingLeft: '10px' }}>
+                  <div style={{ fontSize: '9px', fontWeight: 900, color: 'var(--ink)', marginBottom: '2px' }}>EL ROL DEL MASTER BLENDER</div>
+                  <p style={{ fontSize: '9px', color: 'var(--muted)', margin: 0, lineHeight: '1.25' }}>
+                    Actúa como el <strong>"Gatekeeper de Integridad"</strong>. Estandariza los cortes de destilación de diferentes palenques para asegurar que el Lote 001 sea consistente con el Lote 010.
                   </p>
                 </div>
               </div>
