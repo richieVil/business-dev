@@ -18,9 +18,9 @@ interface DossierEngineV2Props {
   };
   contact: {
     phone: string; // Format: "+52 614 546 3178"
-    whatsapp: string; // URL: "https://wa.me/..."
+    whatsapp: string; // URL: "https://wa.me/526145463178", and add a personalized default message, e.g.: I read the business proposal for "XXXX" and am interested in getting involved.
     email: string;
-    website: string;
+    website: string; // URL: "https://business-dev-two.vercel.app/vat-recovery-bot"
   };
   theme: {
     parchment: string;
@@ -82,6 +82,22 @@ export default function DossierEngineV2({
         .phase-tag { font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 700; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 8px; }
         .label-technical { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--muted); border-left: 2px solid var(--accent); padding-left: 8px; margin-bottom: 20px; }
         .slide-id { font-family: 'Roboto Mono', monospace; font-size: 10px; color: var(--muted); position: absolute; top: 32px; right: 24px; }
+
+        /* ATOMIC TECHNICAL CLASSES */
+        .d-content { color: var(--ink); display: flex; flex-direction: column; flex: 1; }
+        .d-para { font-size: 13px; line-height: 1.4; margin-bottom: 16px; color: var(--muted); }
+        .d-para strong { color: var(--ink); }
+        .d-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 12px; margin-bottom: 12px; }
+        .d-card-accent { border-left: 4px solid var(--accent); background: rgba(255,255,255,0.03); }
+        .d-card-dark { background: var(--ink); color: var(--parchment); }
+        .d-card-dark .d-metric-unit { color: var(--parchment); }
+        .d-card-dark .d-metric-label { color: var(--parchment); opacity: 0.7; }
+        .d-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .d-metric-unit { font-family: 'Roboto Mono', monospace; font-size: 20px; font-weight: 900; color: var(--ink); line-height: 1; }
+        .d-metric-label { font-size: 8px; font-weight: 700; color: var(--muted); text-transform: uppercase; margin-top: 4px; }
+        .d-tag-mono { font-family: 'Roboto Mono', monospace; font-size: 9px; font-weight: 700; color: var(--accent); text-transform: uppercase; margin-bottom: 4px; }
+        .d-list-item { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; font-size: 11px; font-weight: 700; }
+        .d-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); margin-top: 5px; flex-shrink: 0; }
 
         .sticky-footer { margin-top: auto; padding-top: 16px; border-top: 1px solid rgba(0,0,0,0.1); display: flex; flex-direction: column; gap: 6px; }
         .contact-row { display: flex; justify-content: space-between; align-items: center; font-family: 'Roboto Mono', monospace; font-size: 8px; }
