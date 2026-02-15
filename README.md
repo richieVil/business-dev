@@ -11,7 +11,10 @@ These dossiers are not websites; they are high-stakes digital assets for investo
 
 ## 2. Global Architecture: The Bulletproof Cage
 To ensure zero style dropouts across Next.js sub-routes and reliable PDF generation, we use a single-file "Technical Shell" pattern.
-*   **The Route Infrastructure:** Every dossier must consist of two files: (1) `page.tsx` (The Technical Shell) and (2) `layout.tsx` (The Metadata Shadow). This ensures the browser tab title respects the "Technical Authority" of the venture.
+*   **The Route Infrastructure:** Every dossier must consist of two files in its route folder:
+    1.  `page.tsx`: The Technical Shell (Interactive Content).
+    2.  `layout.tsx`: The Metadata Shadow (Server-side SEO and tab branding).
+*   **Metadata Shadow Protocol:** The `layout.tsx` must be a server component that defines the `Metadata` object using the venture's branding (e.g., "C-TPAT Sentinel - Strategic Dossier").
 *   **The Master Cage:** A container with `margin-top: 53px` (to offset the fixed header) and `height: calc(100vh - 53px)`.
 *   **The Internal Style Engine:** CSS should be defined within a `<style>` block in the component to guarantee the environment is identical across all devices and print engines.
 *   **Portrait-Only Constraint:** A hard `max-w-[375px]` and `mx-auto` rule on the main container to cage the viewport.
@@ -48,25 +51,26 @@ Technical data must be housed in containers to mimic a physical dossier:
 ## 6. Standard Narrative Sequence (The 30-Slide Matrix)
 Every dossier must map the **Tasks** from Sprints 1-4 into a 30-slide arc.
 
-*   **S1: The Catalyst (Slides 1-10)**
-    *   Slides 1-2: Executive Briefing (Project ID, Tesis, Catalyst/Why Now).
-    *   Slides 3-5: The Problem & COI (Invisible Tax, Cost of Inaction, Status Quo Failure).
-    *   Slides 6-7: The Technical USP (Benchmark Table, Technical Delta, Unit of Value).
-    *   Slides 8-10: Market Strategy (Ecosystem Map, Substitution Audit, Entry Maneuver).
-*   **S2: The Logic (Slides 11-18)**
-    *   Slides 11-12: The Gatekeeper Gauntlet (IT/Legal Blockers & Neutralizers).
-    *   Slides 13-14: The Golden Number (NCV thresholds, lead indicators).
-    *   Slides 15-16: Revenue Physics (Asymmetric Pricing, Success Fees).
-    *   Slides 17-18: Defensive Moats (Data/Formula Integration, Competitor Brutalista).
-*   **S3: The Machine (Slides 19-24)**
-    *   Slides 19-20: Architecture (MVP Critical Path, Technical Stack).
-    *   Slides 21-22: Asset Genesis (The IP Construction Manual, Knowledge Vault).
-    *   Slides 23-24: Governance (Shadow Oversight, Founder DNA Specs).
-*   **S4: The Physics (Slides 25-30)**
-    *   Slides 25-26: Commercial Logic (Cost Waterfall, Unit Economics, Valuation Multiplier).
-    *   Slides 27-28: Stress Tests (Valley of Death, 18-Mo Cashflow, 20% Miss Pivot).
-    *   Slide 29: The Funding Mandate (The Ask, Exit Triggers, ROI Milestones).
-    *   Slide 30: Conclusion & Mandate (Strategic Mandate, 90-Day Milestone).
+*   **S1: The Catalyst (Slides 1-10: The Problem & Solution)**
+    *   Slides 1-2: **Executive Briefing.** Thesis Central (Industrial Cortex) and "Why Now?" (Silver Tsunami).
+    *   Slides 3-5: **The Friction.** The "Invisible Tax" (Ghost Wages), COI ($615k Leak), and Status Quo Failure (Digital Graveyards).
+    *   Slides 6-7: **Technical USP.** "The Engine" (Action Serialization) and **Brutalista Parity Table** (90dB Noise/Low Lux specs).
+    *   Slides 8-10: **Strategic Positioning.** "Verified Process Minute" definition, Substitution Audit (Bounties), and Entry Maneuver (Trojan Horse).
+*   **S2: The Intelligence & Machine (Slides 11-20)**
+    *   Slides 11-12: **Market Intelligence.** Bottom-up TAM/SAM/SOM and "Grit Corridors" (Geographic Clusters).
+    *   Slides 13-14: **The Golden Number.** Node Coverage Velocity (NCV) and 90-Day Survival Thresholds.
+    *   Slides 15-16: **Competitor Matrix.** Manual vs. Generic SaaS vs. BI-0003.
+    *   Slides 17-19: **Architecture.** Technical Stack (Wedge vs. Dominance), Asset Genesis (The IP Manual), and Fulfillment Chain.
+    *   Slide 20: **Operational Governance.** Shadow Oversight and Multi-Sig HITL Protocols.
+*   **S3: The Physics & Mandate (Slides 21-30)**
+    *   Slide 21: **Validation Roadmap.** Scientific R&D Plan (Hypothesis -> Stress Test).
+    *   Slide 22: **Founder DNA.** The 3 Elite Technical/Domain Specifications.
+    *   Slides 23-25: **Commercial Logic.** Node-Based Pricing, Unit Economics (LTV/CAC 89x), and Allocation Meritocracy.
+    *   Slides 26-27: **Financial Physics.** 18-Month Cashflow and the "Valley of Death" Bridge (Factoring).
+    *   Slide 28: **Invisible Economics.** FX Arbitrage and Data Salvage.
+    *   Slide 29: **The Funding Mandate.** The $2.5M Ask and the EBITDA Multiplier.
+    *   Slide 30: **Strategic Mandate.** The Immediate 90-Day Milestone.
+
 
 ## 7. Pre-Flight Testing Checklist
 1.  [ ] **DevTools:** Set to iPhone SE (375x667). 
@@ -82,25 +86,43 @@ Every dossier must map the **Tasks** from Sprints 1-4 into a 30-slide arc.
 
 ## 9. Reference Technical Skeleton
 
-	'use client';
-	import React from 'react';
-    import DossierEngineV2 from "@/app/components/DossierEngineV2";
+### A. layout.tsx (The Metadata Shadow)
+```typescript
+import { Metadata } from 'next';
 
-	export default function TechnicalDossier() {
-        // Define Slides Array...
-		return (
-			<DossierEngineV2 
-                slides={slides} 
-                branding={{...}} 
-                contact={{...}} 
-                theme={{...}} 
-            />
-		);
-	}
+export const metadata: Metadata = {
+  title: 'Venture Name - Strategic Dossier',
+  description: 'Technical Blueprint and Commercial Logic for Project ID: [ID].',
+};
+
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return <>{children}</>;
+}
+```
+
+### B. page.tsx (The Technical Shell)
+```typescript
+'use client';
+import React from 'react';
+import DossierEngineV2 from "@/app/components/DossierEngineV2";
+
+export default function TechnicalDossier() {
+    // Define Slides Array...
+    return (
+        <DossierEngineV2 
+            slides={slides} 
+            branding={{...}} 
+            contact={{...}} 
+            theme={{...}} 
+        />
+    );
+}
+```
 
 ## 10. Technical Formatting & Localization
 
 *   **Currency Mandate:** All monetary figures must include an explicit ISO 4217 currency code (e.g., `USD`, `MXN`). Never use the `$` symbol in isolation.
+*   **Executive Clarity Mandate:** You are strictly forbidden from using internal venture acronyms (VPT, SAR, NCV) in the code. You must use descriptive terms (e.g., "Verified Transits," "Manual Intervention Rate").
 *   **Language Protocol:** The Project Lead must explicitly define the primary output language (e.g., English, Spanish) during Phase 1 of the development cycle.
 *   **Decimal Precision:** Financial projections should use a maximum of two decimal places for unit costs and zero decimals for large aggregate totals.
 
@@ -167,7 +189,8 @@ Every new page must define its own `theme` object in the `DossierEngineV2` prop.
 
 ## 17. The Pre-Code Protocol: Data Harvesting
 Before writing a single line of React code, the AI Developer **MUST** perform a "Data Harvest" from the Sprint logs.
-*   **Requirement:** Output a table mapping **Hard Metrics** (e.g., NCV: 14 Days, CAC: $8k, TAM: $3.5B) to their specific Slides.
+*   **Requirement:** Output a table mapping **Hard Metrics** (e.g., Setup Velocity: 14 Days, CAC: $8k, TAM: $3.5B) to their specific Slides.
+*   **Grit Mapping:** The harvest MUST include a mapping of "Environmental Grit" (weather/infrastructure/lighting) to the Technical USP slides.
 *   **17.A The Bottom-Up Constraint:** Market analysis slides (TAM/SAM/SOM) must be engineered using **Units-to-USD Arithmetic**. (1) Define Total Units. (2) Apply Unit Yield. (3) Generate Total Market Value. Generic top-down industry stats are classified as "Fluff" and must be rejected.
 *   **Audit Check:** If a slide in the `page.tsx` contains only prose and no harvested metric, it must be flagged for redesign.
 

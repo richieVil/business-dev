@@ -95,13 +95,13 @@ export default function CtpatSentinelDossier() {
     {
       phase: "S01 // THE CATALYST",
       title: "STATUS QUO\nFAILURE",
-      label: "Manual Log Vulnerability",
+      label: "Discovery Proof (VoC)",
       render: () => (
         <div className="d-content">
-          <p className="d-para">Current protocols rely on <strong>"Sampling"</strong> (&lt;15%) rather than <strong>"Census"</strong> (100%), creating a systematic liability gap.</p>
+          <p className="d-para">Based on <strong>40+ simulated stakeholder interviews</strong>, the #1 nightmare is the "Accountability Vacuum" during federal audits.</p>
           <div className="d-card-accent d-card">
-            <div className="d-tag-mono">The Pencil-Whip Risk</div>
-            <p className="d-para" style={{ marginBottom: 0 }}>Human guards falsify logs to clear traffic jams. <strong>85% of cargo enters the network with zero deep-verification.</strong></p>
+            <div className="d-tag-mono">The Yard Manager's Quote</div>
+            <p className="d-para" style={{ marginBottom: 0 }}>"I don't care about AI; I care about my Fast-Lane status. If a guard misses one seal, my whole week is ruined."</p>
           </div>
           <div className="d-grid-2">
             <div className="d-card">
@@ -139,18 +139,22 @@ export default function CtpatSentinelDossier() {
               <div className="d-para" style={{ marginBottom: 0 }}>Coverage</div>
               <div className="d-tag-mono" style={{ fontSize: '12px' }}>100% Census</div>
             </div>
+            <div className="d-grid-2" style={{ borderTop: '1px solid #e2e8f0', marginTop: '4px', paddingTop: '4px' }}>
+              <div className="d-para" style={{ marginBottom: 0 }}><strong>Grit Specs</strong></div>
+              <div className="d-tag-mono" style={{ fontSize: '10px' }}>Legacy 1080p / Dust-Resilient</div>
+            </div>
           </div>
-          <p className="d-para">We substitute the <strong>"Pencil-Whip"</strong> of manual logs with an <strong>Immutable Forensic Ledger.</strong></p>
+          <p className="d-para">Sentinel is engineered for <strong>"Environmental Grit"</strong> (Rain, Low-Light, Dust) where generic CV lab-models fail.</p>
         </div>
       )
     },
     {
       phase: "S01 // THE CATALYST",
       title: "UNIT OF\nVALUE",
-      label: "The Validated Pass-Through",
+      label: "The Verified Transit",
       render: () => (
         <div className="d-content">
-          <p className="d-para">We do not sell cameras; we sell the <strong>Validated Pass-Through (VPT)</strong>—a single, cryptographically verified gate transaction.</p>
+          <p className="d-para">We do not sell cameras; we sell the <strong>Verified Transit</strong>—a single, cryptographically verified gate transaction.</p>
           <div className="d-card-dark d-card">
             <div className="d-tag-mono">The Metric</div>
             <div className="d-metric-unit">COMPLIANCE HOURS</div>
@@ -268,18 +272,18 @@ export default function CtpatSentinelDossier() {
     {
       phase: "S02 // THE LOGIC",
       title: "THE GOLDEN\nNUMBER",
-      label: "Shadow Audit Reliance (SAR)",
+      label: "Manual Intervention Rate",
       render: () => (
         <div className="d-content">
-          <p className="d-para">The single metric governing survival is the <strong>SAR Index</strong>: the % of transits requiring human intervention.</p>
+          <p className="d-para">The single metric governing survival is the <strong>Manual Intervention Rate</strong>: the % of transits requiring human help.</p>
           <div className="d-card-accent d-card">
             <div className="d-metric-unit">&lt; 1.5%</div>
-            <div className="d-metric-label">Elite Range (Venture Scale)</div>
+            <div className="d-metric-label">Elite Range (AI Autonomy)</div>
           </div>
           <div className="d-grid-2">
             <div className="d-card">
               <div className="d-metric-unit">21 DAYS</div>
-              <div className="d-metric-label">Target NCV</div>
+              <div className="d-metric-label">Setup Velocity</div>
             </div>
             <div className="d-card">
               <div className="d-metric-unit">&gt; 12%</div>
@@ -297,7 +301,7 @@ export default function CtpatSentinelDossier() {
         <div className="d-content">
           <div className="d-card-dark d-card">
             <div className="d-metric-unit">0.75 USD</div>
-            <div className="d-metric-label">Fee per Transit (VSE)</div>
+            <div className="d-metric-label">Fee per Verification</div>
           </div>
           <div className="d-grid-2">
             <div className="d-card">
@@ -460,6 +464,23 @@ export default function CtpatSentinelDossier() {
           <div className="d-card">
             <div className="d-tag-mono">CRO: The Logistics Lifer</div>
             <p className="d-para" style={{ fontSize: '10px' }}>Knows how to navigate Fortune 500 Net-90 Mazes.</p>
+          </div>
+        </div>
+      )
+    },
+    {
+      phase: "S03 // THE MACHINE",
+      title: "VALIDATION\nROADMAP",
+      label: "Experiment & Hypothesis",
+      render: () => (
+        <div className="d-content">
+          <div className="d-card-accent d-card">
+            <div className="d-tag-mono">Experiment: The Dark-Feed Test</div>
+            <p className="d-para" style={{ marginBottom: 0 }}><strong>Hypothesis:</strong> AI maintains &gt;95% accuracy on legacy 720p hardware in rain/dust.</p>
+          </div>
+          <div className="d-card d-card">
+            <div className="d-tag-mono">Experiment: The IT Sandbox</div>
+            <p className="d-para" style={{ marginBottom: 0 }}><strong>Hypothesis:</strong> InfoSec will approve "Read-Only" webhooks in &lt;21 days via our Edge-Isolation protocol.</p>
           </div>
         </div>
       )

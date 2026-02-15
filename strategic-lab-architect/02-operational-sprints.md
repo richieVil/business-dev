@@ -41,6 +41,11 @@ If the idea is "Killed" or has low scores, the Architect MUST generate a **Pivot
 ## Sprint 1: The Catalyst (Value, Segments & Validation)
 **Objective:** To define the "Unit of Value," quantify the technical delta, and engineer a defensible market entry roadmap.
 
+### Task 1.0: Synthetic Discovery (The VoC Audit)
+"Initialize Sprint 1.0. Before defining the solution, simulate the 'Voice of the Customer.' 
+1. **Stakeholder Pulse:** Simulate 40 interviews across 3 personas. What is the #1 'Nightmare Scenario' they cite? Use direct quotes (e.g., 'I don't care about AI; I care about my Fast-Lane status').
+2. **The Discovery Delta:** Identify the gap between what the CEO thinks the problem is and what the Yard Manager knows the problem is."
+
 ### Task 1.1: The Macro-Catalyst & Substitution Logic
 "Initialize Sprint 1.1. Analyze the Business Idea and DNA. 
 1. **The Catalyst:** Identify the **External Catalyst** (Regulatory mandate, Economic shift, or Technology breakthrough) that makes this urgent *today*. Explain the 'Window of Opportunity'—what happens if we wait 12 months?
@@ -48,7 +53,7 @@ If the idea is "Killed" or has low scores, the Architect MUST generate a **Pivot
 
 ### Task 1.2: The Technical USP & Benchmark Table
 "Initialize Sprint 1.2. Based on the Substitution Logic, define a **Detailed USP**. Do not use marketing adjectives; use **Technical Specifications**. 
-1. **Benchmark Table:** Create a table comparing our solution against the 'Status Quo' (the invoice we are replacing). Compare at least 4 metrics (e.g., Error Rate, Latency, Man-hours, Cost-per-unit). 
+1. **Benchmark Table:** Create a table comparing our solution against the 'Status Quo' (the invoice we are replacing). Compare at least 4 metrics (e.g., Error Rate, Latency, Man-hours, Cost-per-unit). You MUST include a row for 'Performance in Adverse Conditions' (Rain, Dust, Legacy Hardware).
 2. **Unit of Value:** Define the core metric of improvement (e.g., 'Basis points gained,' 'Liters recovered,' or 'Compliance hours saved'). Quantify the 'Annual Waste' the customer currently accepts as the cost of doing business."
 
 ### Task 1.3: Customer Segments & Ecosystem Mapping
@@ -279,12 +284,13 @@ If the idea is "Killed" or has low scores, the Architect MUST generate a **Pivot
 ### Task 5.1: The Master Technical Business Plan (MTBP)
 "Initialize Sprint 5.1. Synthesize all data from Sprints 1-4 into a **Master Technical Business Plan**. 
 1. **The Internal Manual:** This document must serve as the 'Operating System' for the company. It must prioritize **Specifications over Marketing**. 
-2. **Structural Sections:** 
+2. **Linguistic Clarity Audit:** Audit the entire document for internal shorthand or venture-specific acronyms. Replace all instances with descriptive, plain-English value terms (e.g., replace 'VPT' with 'Verified Transits').
+3. **Structural Sections:** 
     - *The Strategic Core:* Catalyst, Substitution Logic, and Unit of Value.
-    - *The Machine:* Asset Genesis, Fulfillment Chain, and Technical Stack.
+    - *The Machine:* Asset Genesis, Fulfillment Chain, and Technical Stack. **Requirement:** Every technical spec must be explicitly cross-referenced against the 'Environmental Grit' (Task 1.2) it solves.
     - *The Governance:* Shadow Oversight and Founder DNA.
-    - *The Physics:* Cost Waterfall, The Golden Number, and the 18-Month Cashflow Bridge.
-3. **The Audit Trail:** Include the 'Red-Team' findings for each section as a 'Risk & Mitigation' appendix."
+    - *The Physics:* Cost Waterfall, The Golden Number, and the 18-Month Cashflow Bridge. **Requirement:** Enforce absolute linguistic and mathematical consistency across these three sections.
+4. **The Audit Trail:** Include the 'Red-Team' findings for each section as a 'Risk & Mitigation' appendix."
 
 ### Task 5.2: The Strategic Dossier Brief (Slides 1-10: The Problem & Solution)
 "Initialize Sprint 5.2. Generate the first 10 slides of the **Strategic Dossier** (Portrait Standard). 
@@ -312,7 +318,9 @@ If the idea is "Killed" or has low scores, the Architect MUST generate a **Pivot
 - **Slide 30: CONCLUSION & MANDATE.** The Strategic Mandate and the **Immediate 90-Day Milestone**."
 
 ### Task 5.5: Final Tone & Visual Language Audit
-"Initialize Sprint 5.5. Perform a final review of the Dossier's tone. 
+"Initialize Sprint 5.5. Perform a final review of the Dossier's accessibility and tone. 
 1. **The 'Industrial Physics' Check:** Remove any remaining 'fluff' or generic SaaS adjectives (e.g., 'revolutionary,' 'seamless,' 'disruptive'). 
-2. **The Metric Density:** Ensure every slide contains at least one **Hard Metric** or **Technical Specification**. 
-3. **The Cohesion Check:** Ensure the 'Unit of Value' defined in Slide 8 is the same metric that drives the 'Golden Number' in Slide 13 and the 'Revenue Physics' in Slide 23."
+2. **The Zero-Acronym Rule:** Perform a final "Semantic Flush." Remove every proprietary acronym. The deck must be 100% readable by a generalist VC or C-suite executive without a glossary.
+3. **The Sync-Lock:** Ensure 'Environmental Grit' (lighting/weather/legacy gear) from Sprint 1.2 is explicitly represented on the Technical USP slides. 
+4. **The Metric Density:** Ensure every slide contains at least one **Hard Metric** or **Technical Specification**. 
+5. **The Cohesion Check:** Ensure the 'Unit of Value' defined in Slide 8 is the same metric that drives the 'Golden Number' in Slide 13 and the 'Revenue Physics' in Slide 23."
