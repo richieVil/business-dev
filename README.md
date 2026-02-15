@@ -1,3 +1,270 @@
+# Strategic Dossier Execution Playbook: 6-Stage Atomic Pipeline
+
+This document contains the sequential prompts required to build a "Junior Legal" Strategic Dossier. Execute these one by one in a new LLM conversation.
+
+---
+
+
+
+clear; Write-Host '```'; Get-ChildItem -Path . -Recurse -Depth 4 | Where-Object { $_.FullName -notmatch '\\(node_modules|\.git|\.next|dist)\\' } | Select-Object -ExpandProperty FullName; Write-Host '```'
+
+
+clear; $path = "strategic-lab-architect/generated-plans"; Get-ChildItem -Path $path -File | ForEach-Object { $file = $_.FullName; Write-Host "--- START OF FILE: $file ---"; Write-Host '```'; Get-Content -LiteralPath $file -Encoding Utf8 | Out-String; Write-Host '```'; Write-Host "--- END OF FILE: $file ---"; Write-Host "" }
+
+
+
+clear; $files = "app/components/DossierEngineV2.tsx"; foreach ($file in $files) { Write-Host "--- START OF FILE: $file ---"; Write-Host '```'; Get-Content -LiteralPath $file -Encoding Utf8 | Out-String; Write-Host '```'; Write-Host "--- END OF FILE: $file ---"; Write-Host "" }
+
+
+
+
+
+
+
+
+
+
+# [STAGE 1]: INFRASTRUCTURE, PRINT ENGINE & SEMANTIC SKINNING
+
+"You are the **Strategic Lab Architect**. We are initializing the implementation of a High-Stakes Technical Dossier for: **[INSERT VENTURE NAME HERE]**. 
+
+## 1. IDENTITY & SEMANTIC SKINNING (Section 1, 5, 16)
+Analyze the Venture DNA and select the **Identity Pattern**. 
+- **Contrast Mandate:** You must ensure a **7:1 ratio** for `ink` vs `parchment`.
+- **The "Muted" Floor:** Your `muted` color (used for secondary text) MUST satisfy a **4.5:1 ratio** against the background. 
+    - *Dark Mode Rule:* Do not use dark greys (#666-#888). Use Silver/Zinc (#A3A3A3 or lighter).
+    - *Light Mode Rule:* Do not use light greys (#AAA). Use Slate/Charcoal (#64748B or darker).
+- **THE SCANNER (Tech-Autonomous):** #0A0A0A (Parchment) | #FFFFFF (Ink) | #DC2626 (Accent). [Monospace focus].
+- **THE LEDGER (Asset-Light):** #F5F5F0 (Parchment) | #164E63 (Ink) | #0891B2 (Accent). [Serif focus].
+- **THE BLUEPRINT (Logistics/Owned):** #FFFFFF (Parchment) | #111827 (Ink) | #2563EB (Accent). [Sans focus].
+- **THE LABORATORY (R&D/Bio):** #064E3B (Parchment) | #ECFDF5 (Ink) | #10B981 (Accent).
+- **THE FORTRESS (Security/Defense):** #1F2937 (Parchment) | #F9FAFB (Ink) | #6B7280 (Accent).
+- **CUSTOM:** Propose a hex triplet if the DNA requires a unique signature.
+
+## 2. THE UI STRESS TEST (NEW)
+- Slide ID 00 must be a **UI Stress Test Slide**. 
+- It must render every atomic class (`.d-card`, `.d-card-dark`, `.d-card-accent`, `.d-grid-2`) in a single view to verify contrast and font-size floor before we begin the content sprints.
+- **The 12px Floor:** Every text element must have a minimum `font-size: 12px`. You are strictly forbidden from using smaller text.
+
+## 3. METADATA SHADOW (Section 9.A)
+Generate `app/[venture-id]/layout.tsx` (Server Component). Define the `Metadata` object:
+- Title: '[Venture Name] - Strategic Dossier'
+- Description: 'Technical Blueprint and Commercial Logic for Project ID: [ID].'
+
+## 4. VIEWPORT GOVERNANCE (Section 2, 3, 12)
+Target Hardware: **iPhone SE (375px x 667px)**. 
+- **The Master Cage:** Initialize a container with `max-w-[375px]`, `mx-auto`, `scroll-snap-type: y mandatory`, and `overflow-y: scroll`.
+- **The 600px Rule:** Every slide must utilize `min-height: calc(100vh - 53px)`. You are strictly forbidden from exceeding **600px of vertical content height** per slide to ensure zero internal scrolling.
+- **Header Offset:** The content must be awareness-compatible with the 53px fixed header.
+
+## 5. THE TECHNICAL SHELL & PRINT ENGINE (CRITICAL)
+Generate `app/[venture-id]/page.tsx` (Client Component). 
+- **CSS Injection:** You MUST inject a `<style>` block at the top of the component containing the **Junior Legal (5"x8")** Digital PDF Engine:
+    ```css
+    @media print {
+        @page { size: 5in 8in; margin: 0; }
+        body { -webkit-print-color-adjust: exact !important; }
+        .fixed-header { display: none !important; }
+        .master-cage { margin: 0 !important; display: block !important; overflow: visible !important; height: auto !important; }
+        .slide { display: flex !important; height: 8in !important; width: 5in !important; break-after: page !important; }
+    }
+    ```
+- Initialize `DossierEngineV2` using the `theme` object.
+- **The Slide Matrix:** Define a `slides` constant array with IDs 1 through 30.
+- Each slide object must include: `id`, `title`, `label`, and a placeholder `render: (theme) => <></>`.
+
+**Constraint:** Output ONLY the code for `layout.tsx` and the `page.tsx` skeleton. Do not implement slide content yet. Standing by for infrastructure verification."
+
+
+
+
+
+
+---
+
+
+
+
+
+# [STAGE 2]: DATA HARVESTING, ARITHMETIC AUDIT & STRATEGIC FILTERING
+
+"Infrastructure verified. We are now executing the **Pre-Code Data Harvest** (Section 17). Your goal is to extract the 'Hard Truths' from the Master Technical Business Plan (MTBP) to ensure every slide projects Technical Authority.
+
+## 1. THE METRIC VAULT (NEW)
+Analyze the MTBP and generate a JSON-style 'Metric Vault'. 
+- Every slide ID must be assigned at least one **Hard Metric**. 
+- If a slide lacks a metric, flag it for deletion or merge.
+- **Currency Mandate:** All monetary figures MUST include ISO 4217 codes (e.g., USD, MXN). Do not use '$' in isolation.
+- **Decimal Precision:** Use exactly two decimals for unit costs/rates; zero decimals for large aggregate totals.
+
+## 2. INCUMBENT FAILURE AUDIT (NEW)
+- Define the 'Physical Failure Point' for existing solutions (e.g., Why exactly does a human or a $20k camera fail in 105dB?). 
+- Map these failures directly to the technical specifications for the USP slides.
+
+## 3. ENVIRONMENTAL GRIT MAPPING (Section 7, 12, 17)
+Itemize the specific 'Environmental Grit' (Acoustic saturation, oil-mist, 105dB noise, legacy infrastructure, Laredo lighting, etc.) and map them specifically to the **Technical USP (Slides 6 & 7)**. Define the technical solution for each grit factor.
+
+## 4. BOTTOM-UP MARKET ARITHMETIC (Section 17.A)
+Provide the **Units-to-USD Arithmetic** for the TAM/SAM/SOM analysis. 
+- *The Logic:* [Total Units] * [Annual Yield per Unit] = [Total Market Value].
+- *Constraint:* You are strictly forbidden from providing generic top-down industry percentages. Show the raw math.
+
+## 5. THE STRATEGIC FILTER (Section 13)
+For every primary metric identified, define its **Strategic Narrative Hierarchy**:
+1. **Metric/Fact:** (The raw number).
+2. **Strategic Value:** (Does this identify a Moat, a Risk, or an Opportunity?).
+3. **Action/Risk:** (What must the stakeholder do or fear because of this number?).
+
+**Constraint:** Output ONLY the Mapping Table, the Grit Specifications, and the Market Arithmetic. You are strictly forbidden from generating React code or component logic in this turn. Standing by for verification of the harvest."
+
+
+
+
+
+---
+
+
+
+
+
+# [STAGE 3]: CONTENT SPRINT A - THE CATALYST (SLIDES 1-10)
+
+"Data Harvest verified. We are now initializing Stage 3: Content Implementation for **Slides 1 through 10**. Your goal is to project Technical Authority and Radical Transparency.
+
+## 1. VERTICAL GOVERNANCE & VIEWPORT (Section 3 & 12)
+Target Device: **iPhone SE (375x667)**.
+- **The 600px Safe Zone:** You are strictly forbidden from exceeding **600px of vertical content height** per slide. 
+- **Character Limits:** For `.d-grid-2` cards, you are limited to **15 words per card**. Prioritize nouns and metrics. 
+- **Theme Injection:** Ensure every `render` wrapper enforces the theme ink color: `<div className="d-content" style={{ color: theme.ink }}>`.
+
+## 2. ATOMIC TECHNICAL FRAMEWORK & PURGE (CRITICAL)
+You are strictly forbidden from using custom CSS or Tailwind utility classes (`text-*`, `p-*`, `m-*`, `flex-*`) inside the `render` functions. You must exclusively use the following Atomic Classes:
+- `.d-content`: Root wrapper.
+- `.d-grid-2`: 50/50 metric/card split.
+- `.d-card` | `.d-card-accent` | `.d-card-dark`: Data containers.
+- `.d-metric-unit`, `.d-metric-label`, `.d-para`, `.d-tag-mono`.
+- `.d-list-item` | `.d-dot`.
+
+## 3. NARRATIVE HIERARCHY (Section 6 & 13)
+Implement the `render` functions for the following arc:
+- **Slides 1-2 [Executive Briefing]:** The Thesis Central and 'Why Now?' Catalyst.
+- **Slides 3-5 [The Friction]:** The 'Invisible Tax' (use `.d-metric-unit` for the USD COI) and the 'Status Quo Failure'.
+- **Slides 6-7 [Technical USP]:** 'The Engine' and the **Brutalista Benchmark Table**. 
+    - *Requirement:* Explicitly include the 'Environmental Grit' solutions mapped in Stage 2.
+- **Slides 8-10 [Strategic Positioning]:** The 'Unit of Value' definition, 'Substitution Audit', and the 'Trojan Horse' Entry Maneuver.
+
+## 4. DATA INTEGRITY (Section 10)
+- Ensure 100% adherence to the **ISO 4217 Currency Mandate**.
+- **Metric Vault Audit:** Every slide MUST pull directly from the **Metric Vault** established in Stage 2. No invented or 'placeholder' data.
+
+**Constraint:** Output ONLY the `render` functions for Slides 1-10. No conversational fluff. Standing by for verification."
+
+
+
+
+
+
+---
+
+
+
+
+
+
+# [STAGE 4]: CONTENT SPRINT B - THE MACHINE (SLIDES 11-20)
+
+"Content Sprint A verified. We are now initializing Stage 4: Implementation of **Slides 11 through 20**. This arc must define the 'Machine's' operational dominance and long-term defensibility.
+
+## 1. VERTICAL GOVERNANCE & VIEWPORT (Section 3 & 12)
+Target Device: **iPhone SE (375x667)**.
+- **The 600px Safe Zone:** You are strictly forbidden from exceeding **600px of vertical content height** per slide.
+- **Complexity Management:** For dense slides (Matrix/Architecture), use `.d-grid-2` or minimalist bullet lists. If the data density threatens the 600px limit, prioritize the 'Golden Number' over descriptive prose.
+
+## 2. ATOMIC TECHNICAL FRAMEWORK & PURGE (CRITICAL)
+Strict Enforcement: No custom CSS. No Tailwind color/spacing utilities. Use only:
+- `.d-content`, `.d-grid-2`, `.d-card`, `.d-card-accent`, `.d-card-dark`.
+- `.d-metric-unit`, `.d-metric-label`, `.d-para`, `.d-tag-mono`.
+- `.d-list-item`, `.d-dot`.
+
+## 3. NARRATIVE SEQUENCE & LOGIC (Section 6 & 11)
+Implement the `render` functions for the following:
+- **Slides 11-12 [Market Intelligence]:** Bottom-up TAM/SAM/SOM (using the arithmetic from Stage 2) and 'Grit Corridors' (Geographic Clusters).
+- **Slides 13-14 [The Golden Number]:** The Primary Survival Metric (e.g., Node Coverage Velocity) and the **90-Day Survival Thresholds** (Elite/Healthy/Death zones).
+- **Slides 15-16 [Competitor Matrix]:** A brutal 'Us vs. Legacy vs. Generic SaaS' comparison. 
+    - *Requirement:* Use `.d-grid-2` to highlight the **Technical Specification Lock** that incumbents cannot replicate.
+- **Slides 17-19 [Architecture & IP]:** Technical Stack (Wedge vs. Dominance), Asset Genesis (The IP Manual), and the **Fulfillment Chain**.
+    - *Requirement:* Slide 19 must visualize the step-by-step movement from 'Raw Input' to 'Verified Value'.
+- **Slide 20 [Operational Governance]:** Shadow Oversight and Multi-Sig HITL Protocols (Section 13 of MTBP).
+
+## 4. LINGUISTIC & DATA INTEGRITY (Section 10)
+- **No Acronyms:** Use descriptive terms (e.g., 'Manual Intervention Rate') instead of internal shorthand.
+- **Currency/Decimals:** 100% adherence to ISO 4217 and Stage 2 Decimal Precision.
+
+**Constraint:** Output ONLY the `render` functions for Slides 11-20. No conversational fluff. Standing by for verification."
+
+
+
+
+
+
+
+---
+
+
+
+
+
+
+
+# [STAGE 5]: CONTENT SPRINT C - THE MANDATE (SLIDES 21-30)
+
+"Content Sprint B verified. We are now initializing Stage 5: Implementation of **Slides 21 through 30**. This final arc must define the commercial viability, the funding requirement, and the immediate path to execution.
+
+## 1. VERTICAL GOVERNANCE & VIEWPORT (Section 3 & 12)
+Target Device: **iPhone SE (375px x 667px)**.
+- **The 600px Safe Zone:** You are strictly forbidden from exceeding **600px of vertical content height** per slide. 
+- **Financial Density:** For complex financial slides (26-27), use `.d-grid-2` to keep the 'Golden Numbers' visible without requiring a scroll.
+
+## 2. ATOMIC TECHNICAL FRAMEWORK & PURGE (CRITICAL)
+Strict Enforcement: No custom CSS. No Tailwind utilities. Use ONLY:
+- `.d-content`, `.d-grid-2`, `.d-card`, `.d-card-accent`, `.d-card-dark`.
+- `.d-metric-unit`, `.d-metric-label`, `.d-para`, `.d-tag-mono`.
+- `.d-list-item`, `.d-dot`.
+
+## 3. NARRATIVE SEQUENCE & COMMERCIAL LOGIC (Section 6 & 10)
+Implement the `render` functions for the following:
+- **Slide 21 [Validation Roadmap]:** The Scientific R&D Plan. Use `.d-list-item` to map the (Hypothesis) -> (Stress Test) -> (Pass Metric) logic from the MTBP.
+- **Slide 22 [Founder DNA]:** The 3 Elite Technical/Domain Specifications (Superpowers).
+- **Slides 23-25 [Commercial Logic]:** Node-Based Pricing, Unit Economics (LTV/CAC), and **Allocation Meritocracy** (where the next dollar of capital goes).
+- **Slides 26-27 [Financial Physics]:** The '18-Month Cashflow' vs. 'The Float'. 
+    - *Requirement:* Use `.d-grid-2` to contrast the Cash-on-Hand against the **Net-120 Payment Term** reality. Use `.d-card-accent` for the 'Survival Bridge' (Factoring/Credit) logic.
+- **Slide 28 [Invisible Economics]:** Quantify the FX Arbitrage, Tax Credits (e.g., IRA/CBAM), or Data Salvage value.
+- **Slide 29 [The Funding Mandate]:** **The "Ask"**. 
+    - *Requirement:* Use `.d-card-dark` to house the Golden Number (Total USD/MXN required). You must explicitly mention the **EBITDA Multiplier** effect (Section 4.4 of MTBP).
+- **Slide 30 [Strategic Mandate]:** The Immediate **90-Day Milestone**. Define the deterministic 'Go' signal.
+
+## 4. LINGUISTIC & DATA INTEGRITY (Section 10 & 13)
+- **Currency Mandate:** Every financial figure MUST include the ISO 4217 code. 
+- **Narrative Hierarchy:** (1) Metric -> (2) Strategic Value -> (3) Action/Risk.
+- **No Acronyms:** Replace all internal shorthand with descriptive, plain-English value terms.
+
+**Constraint:** Output ONLY the `render` functions for Slides 21-30. No conversational fluff. Standing by for final content verification."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Strategic Dossier Portfolio: Technical Manifest v2.1
 
 ## 1. Executive Philosophy: "The Technical Intelligence Report" v3.0
@@ -202,12 +469,3 @@ To ensure the PDF Print Engine does not break, the AI Developer is **forbidden**
 
 
 
-
----
-
-
-
-clear; Write-Host '```'; Get-ChildItem -Path . -Recurse -Depth 4 | Where-Object { $_.FullName -notmatch '\\(node_modules|\.git|\.next|dist)\\' } | Select-Object -ExpandProperty FullName; Write-Host '```'
-
-
-clear; $files = "app/components/DossierEngineV2.tsx"; foreach ($file in $files) { Write-Host "--- START OF FILE: $file ---"; Write-Host '```'; Get-Content -LiteralPath $file -Encoding Utf8 | Out-String; Write-Host '```'; Write-Host "--- END OF FILE: $file ---"; Write-Host "" }

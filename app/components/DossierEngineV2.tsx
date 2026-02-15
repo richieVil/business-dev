@@ -19,7 +19,7 @@ interface DossierEngineV2Props {
   contact: {
     phone: string; // Format: "+52 614 546 3178"
     whatsapp: string; // URL: "https://wa.me/526145463178", and add a personalized default message, e.g.: I read the business proposal for "XXXX" and am interested in getting involved.
-    email: string;
+    email: string; // quadraticldm@gmail.com
     website: string; // URL: "https://business-dev-two.vercel.app/vat-recovery-bot"
   };
   theme: {
