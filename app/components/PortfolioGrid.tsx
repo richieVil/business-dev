@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, AlertCircle, TrendingUp, Archive, RefreshCcw, CheckCircle, ArrowUpDown, ChevronUp, ChevronDown, X, ExternalLink, Copy, ClipboardCheck, FilterX, Download, Save } from 'lucide-react';
 
@@ -30,9 +31,14 @@ interface Idea {
 }
 
 export default function PortfolioGrid({ csvData }: { csvData: string }) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  
   const [searchTerm, setSearchTerm] = useState("");
   const [filterStatus, setFilterStatus] = useState("ALL");
   const [selectedIdea, setSelectedIdea] = useState<Idea | null>(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const [jsonEditText, setJsonEditText] = useState("");
   const [showImport, setShowImport] = useState(false);
   const [importText, setImportText] = useState("");
   const [isSaving, setIsSaving] = useState(false);
@@ -165,6 +171,25 @@ export default function PortfolioGrid({ csvData }: { csvData: string }) {
     return matchesSearch && matchesStatus && matchesColFilters;
   });
 
+  // Effect to synchronize modal state with URL parameter
+  useEffect(() => {
+    const modalId = searchParams.get('modal');
+    if (modalId && ideas.length > 0) {
+      const ideaToOpen = ideas.find(i => i.ID === modalId);
+      if (ideaToOpen) {
+        // If the idea exists, open its modal
+        setSelectedIdea(ideaToOpen);
+      } else {
+        // If the ID in the URL is invalid, clean the URL and close any open modal
+        router.push('/portfolio');
+      }
+    } else {
+      // If there is no modalId in the URL, ensure the modal is closed
+      setSelectedIdea(null);
+      setIsEditing(false); // Also reset editing state when closing
+    }
+  }, [searchParams, ideas, router]); // Re-run whenever the URL or data changes
+
   const [copying, setCopying] = useState(false);
 
   const clearFilters = () => {
@@ -181,40 +206,122 @@ export default function PortfolioGrid({ csvData }: { csvData: string }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newIdeas)
       });
-      if (!res.ok) throw new Error("Failed to save");
-      // Force reload to see changes (optional, but good for CSV sync)
-      window.location.reload();
+      if (!res.ok) {
+        throw new Error(`Failed to save: ${res.statusText}`);
+      }
+      return true; // Return success
     } catch (e) {
-      alert("Error saving to disk. Check console.");
+      alert("Error saving to disk. Check console for details.");
       console.error(e);
+      return false; // Return failure
+    } finally {
+      // This block ALWAYS runs, regardless of success or failure in try/catch
       setIsSaving(false);
+    }
+  };
+
+  const handleEditOpen = () => {
+    if (!selectedIdea) return;
+    const cleanIdea = { ...selectedIdea };
+    delete (cleanIdea as any).GeometricScore;
+    delete (cleanIdea as any).SuggestedStatus;
+    delete (cleanIdea as any).Mismatch;
+    // Pre-populate with the array format the LLM provides
+    setJsonEditText(`[\n  ${JSON.stringify(cleanIdea, null, 2)}\n]`);
+    setIsEditing(true);
+  };
+  
+  const handleEditSave = async () => {
+    if (!selectedIdea) return;
+    try {
+      const parsedData = JSON.parse(jsonEditText);
+      
+      if (!Array.isArray(parsedData) || parsedData.length !== 1) {
+        alert("Invalid format. Please provide a JSON array with a single idea object.");
+        return;
+      }
+      
+      const editedIdea = parsedData[0];
+
+      // Security check: ensure the ID in the JSON matches the idea being edited
+      if (editedIdea.ID !== selectedIdea.ID) {
+        alert(`ID Mismatch: You are editing "${selectedIdea.ID}" but the JSON contains "${editedIdea.ID}". Please correct the ID.`);
+        return;
+      }
+
+      const updatedList = ideas.map(idea => 
+        idea.ID === selectedIdea.ID ? { ...idea, ...editedIdea } : idea
+      );
+      
+      const success = await saveToDisk(updatedList);
+      if (success) {
+        // Reload the page with the modal open
+        router.push(`/portfolio?modal=${selectedIdea.ID}`);
+      }
+    } catch (e) {
+      alert("Invalid JSON format. Please correct and try again.");
     }
   };
 
   const handleImport = () => {
     try {
-      // Clean markdown code blocks if present
       const cleanJson = importText.replace(/```json/g, '').replace(/```/g, '').trim();
-      const imported: Idea[] = JSON.parse(cleanJson);
+      const imported: any[] = JSON.parse(cleanJson);
       
-      // Upsert Logic
       const newMap = new Map(ideas.map(i => [i.ID, i]));
-      imported.forEach(item => {
-        // Ensure numbers are numbers
-        item.Feasibility = Number(item.Feasibility) || 0;
-        item.Value = Number(item.Value) || 0;
-        item.BlueOcean = Number(item.BlueOcean) || 0;
-        item.Physics = Number(item.Physics) || 0;
-        item.Velocity = Number(item.Velocity) || 0;
-        newMap.set(item.ID, { ...newMap.get(item.ID), ...item });
+      
+      imported.forEach(partial => {
+        const existing = newMap.get(partial.ID);
+        
+        // If NEW idea, initialize with defaults then overwrite with partials
+        if (!existing) {
+          const newItem: any = { 
+            ID: partial.ID, Feasibility: 0, Value: 0, BlueOcean: 0, Physics: 0, Velocity: 0, 
+            Name: "New Idea", SavedStatus: "LAB-READY", ...partial 
+          };
+          // Handle Alias for new items
+          if (partial.Description) newItem.ProductsServices = partial.Description;
+          newMap.set(partial.ID, newItem);
+          return;
+        }
+
+        // If EXISTING idea, perform Non-Destructive Merge
+        const updated = { ...existing };
+
+        // 1. Update String Fields (Only if present in partial)
+        const stringFields = ["Name", "Archetype", "ProductsServices", "CustomerTypes", "Model", "Barrier", "CapitalReq", "AILeverage", "StrategicAcquirer", "SavedStatus", "TAM_Customers", "AvgRevPerCust", "TAM_MUSD", "Comments"];
+        stringFields.forEach(field => {
+          if (partial[field] !== undefined) {
+            updated[field as keyof Idea] = String(partial[field]);
+          }
+        });
+
+        // 2. Handle 'Description' Alias (LLM often uses this old key)
+        if (partial.Description !== undefined) {
+          updated.ProductsServices = String(partial.Description);
+        }
+
+        // 3. Update Number Fields (Only if present and valid)
+        const numberFields = ["Feasibility", "Value", "BlueOcean", "Physics", "Velocity"];
+        numberFields.forEach(field => {
+          if (partial[field] !== undefined && partial[field] !== null && partial[field] !== "") {
+            const num = Number(partial[field]);
+            if (!isNaN(num)) {
+              updated[field as keyof Idea] = num;
+            }
+          }
+        });
+
+        newMap.set(partial.ID, updated);
       });
       
       const mergedList = Array.from(newMap.values());
-      saveToDisk(mergedList);
+      saveToDisk(mergedList as Idea[]);
       setShowImport(false);
       setImportText("");
     } catch (e) {
-      alert("Invalid JSON format. Please check your clipboard.");
+      console.error(e);
+      alert("Invalid JSON format or duplicate IDs.");
     }
   };
 
@@ -515,114 +622,132 @@ export default function PortfolioGrid({ csvData }: { csvData: string }) {
 
       {/* Idea Details Modal */}
       <AnimatePresence>
-
         {selectedIdea && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
             <motion.div 
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              onClick={() => setSelectedIdea(null)}
+              onClick={() => router.push('/portfolio')}
               className="absolute inset-0 bg-black/80 backdrop-blur-sm"
             />
             <motion.div 
               initial={{ scale: 0.95, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.95, opacity: 0, y: 20 }}
-              className="relative w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden"
+              className="relative w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh]"
             >
-              <div className="p-6 border-b border-slate-800 flex justify-between items-start">
+              {/* Modal Header */}
+              <div className="p-4 md:p-6 border-b border-slate-800 flex justify-between items-start flex-none">
                 <div>
                   <span className="text-[10px] font-mono text-blue-500 font-bold uppercase tracking-widest">{selectedIdea.ID} — {selectedIdea.Archetype}</span>
-                  <h2 className="text-2xl font-bold text-white mt-1">{selectedIdea.Name}</h2>
+                  <h2 className="text-lg md:text-2xl font-bold text-white mt-1">{isEditing ? `Editing: ${selectedIdea.Name}` : selectedIdea.Name}</h2>
                 </div>
-                <button onClick={() => setSelectedIdea(null)} className="p-2 hover:bg-slate-800 rounded-full transition-colors text-slate-400">
+                <button onClick={() => router.push('/portfolio')} className="p-2 hover:bg-slate-800 rounded-full transition-colors text-slate-400">
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
-              <div className="p-8 space-y-8 overflow-y-auto max-h-[70vh]">
-                <section>
-                  <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">Strategic Description</h4>
-                  <p className="text-slate-300 leading-relaxed italic border-l-2 border-blue-500/30 pl-4">
-                    "{selectedIdea.ProductsServices || "No description provided."}"
-                  </p>
-                </section>
-
-                <div className="grid grid-cols-2 gap-8">
-                  <section>
-                    <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">Metrics Breakdown</h4>
-                    <div className="grid grid-cols-5 gap-2">
-                      {[
-                        { l: 'F', v: selectedIdea.Feasibility },
-                        { l: 'V', v: selectedIdea.Value },
-                        { l: 'O', v: selectedIdea.BlueOcean },
-                        { l: 'P', v: selectedIdea.Physics },
-                        { l: 'S', v: selectedIdea.Velocity }
-                      ].map(m => (
-                        <div key={m.l} className="text-center bg-slate-950 p-2 rounded border border-slate-800">
-                          <div className="text-[9px] text-slate-600 mb-1">{m.l}</div>
-                          <div className="text-sm font-bold text-slate-200">{m.v}</div>
+              {/* Modal Body */}
+              <div className="p-4 md:p-8 space-y-8 overflow-y-auto flex-1 scrollbar-thin scrollbar-thumb-slate-700">
+                {isEditing ? (
+                  <textarea
+                    className="w-full h-full min-h-[40vh] bg-slate-950 border border-slate-800 rounded-lg p-3 text-xs font-mono text-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500/50 resize-none"
+                    value={jsonEditText}
+                    onChange={(e) => setJsonEditText(e.target.value)}
+                  />
+                ) : (
+                  <>
+                    <section>
+                      <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">Strategic Description</h4>
+                      <p className="text-slate-300 leading-relaxed italic border-l-2 border-blue-500/30 pl-4 text-sm md:text-base">
+                        "{selectedIdea.ProductsServices || "No description provided."}"
+                      </p>
+                    </section>
+                    <div className="grid md:grid-cols-2 gap-8">
+                      <section>
+                        <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">Metrics Breakdown</h4>
+                        <div className="grid grid-cols-5 gap-2">
+                          {[
+                            { l: 'F', v: selectedIdea.Feasibility }, { l: 'V', v: selectedIdea.Value },
+                            { l: 'O', v: selectedIdea.BlueOcean }, { l: 'P', v: selectedIdea.Physics },
+                            { l: 'S', v: selectedIdea.Velocity }
+                          ].map(m => (
+                            <div key={m.l} className="text-center bg-slate-950 p-2 rounded border border-slate-800">
+                              <div className="text-[9px] text-slate-600 mb-1">{m.l}</div>
+                              <div className="text-sm font-bold text-slate-200">{m.v}</div>
+                            </div>
+                          ))}
                         </div>
-                      ))}
-                    </div>
-                  </section>
-                  <section>
-                    <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">Status Analysis</h4>
-                    <div className="flex items-center gap-2">
-                      <span className={`px-3 py-1 rounded-md text-xs font-bold border ${getStatusColor(selectedIdea.SavedStatus)}`}>
-                        {selectedIdea.SavedStatus}
-                      </span>
-                      {selectedIdea.Mismatch && (
-                        <div className="flex items-center gap-1.5 px-2 py-1 rounded text-[10px] font-bold bg-amber-500/10 text-amber-500 border border-amber-500/20">
-                          <AlertCircle className="w-3 h-3" /> PILLARS MISMATCH
+                      </section>
+                      <section>
+                        <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">Status Analysis</h4>
+                        <div className="flex items-center gap-2">
+                          <span className={`px-3 py-1 rounded-md text-xs font-bold border ${getStatusColor(selectedIdea.SavedStatus)}`}>
+                            {selectedIdea.SavedStatus}
+                          </span>
+                          {selectedIdea.Mismatch && (
+                            <div className="flex items-center gap-1.5 px-2 py-1 rounded text-[10px] font-bold bg-amber-500/10 text-amber-500 border border-amber-500/20">
+                              <AlertCircle className="w-3 h-3" /> PILLARS MISMATCH
+                            </div>
+                          )}
                         </div>
-                      )}
+                      </section>
                     </div>
-                  </section>
-                </div>
+                    <section className="bg-slate-950/50 rounded-xl p-5 border border-slate-800/50">
+                      <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+                        <TrendingUp className="w-3 h-3" /> Market & Financial Potential
+                      </h4>
+                      <div className="grid grid-cols-3 gap-6">
+                        <div>
+                          <div className="text-[9px] text-slate-600 uppercase font-bold mb-1">TAM Customers</div>
+                          <div className="text-sm text-slate-200 font-mono">{selectedIdea.TAM_Customers || "N/A"}</div>
+                        </div>
+                        <div>
+                          <div className="text-[9px] text-slate-600 uppercase font-bold mb-1">Avg Rev / Cust</div>
+                          <div className="text-sm text-slate-200 font-mono">{selectedIdea.AvgRevPerCust || "N/A"}</div>
+                        </div>
+                        <div>
+                          <div className="text-[9px] text-slate-600 uppercase font-bold mb-1">TAM (M USD)</div>
+                          <div className="text-lg text-blue-400 font-bold font-mono">${selectedIdea.TAM_MUSD || "0"}M</div>
+                        </div>
+                      </div>
+                      <div className="mt-4 pt-4 border-t border-slate-900 grid grid-cols-2 gap-4">
+                        <div>
+                          <div className="text-[9px] text-slate-600 uppercase font-bold mb-1">Barrier to Entry</div>
+                          <div className="text-xs text-slate-400">{selectedIdea.Barrier || "N/A"}</div>
+                        </div>
+                        <div>
+                          <div className="text-[9px] text-slate-600 uppercase font-bold mb-1">Strategic Acquirer</div>
+                          <div className="text-xs text-slate-400">{selectedIdea.StrategicAcquirer || "N/A"}</div>
+                        </div>
+                      </div>
+                    </section>
+                  </>
+                )}
+              </div>
 
-                <section className="bg-slate-950/50 rounded-xl p-5 border border-slate-800/50">
-                  <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-4 flex items-center gap-2">
-                    <TrendingUp className="w-3 h-3" /> Market & Financial Potential
-                  </h4>
-                  <div className="grid grid-cols-3 gap-6">
-                    <div>
-                      <div className="text-[9px] text-slate-600 uppercase font-bold mb-1">TAM Customers</div>
-                      <div className="text-sm text-slate-200 font-mono">{selectedIdea.TAM_Customers || "N/A"}</div>
-                    </div>
-                    <div>
-                      <div className="text-[9px] text-slate-600 uppercase font-bold mb-1">Avg Rev / Cust</div>
-                      <div className="text-sm text-slate-200 font-mono">{selectedIdea.AvgRevPerCust || "N/A"}</div>
-                    </div>
-                    <div>
-                      <div className="text-[9px] text-slate-600 uppercase font-bold mb-1">TAM (M USD)</div>
-                      <div className="text-lg text-blue-400 font-bold font-mono">${selectedIdea.TAM_MUSD || "0"}M</div>
-                    </div>
-                  </div>
-                  <div className="mt-4 pt-4 border-t border-slate-900 grid grid-cols-2 gap-4">
-                    <div>
-                      <div className="text-[9px] text-slate-600 uppercase font-bold mb-1">Barrier to Entry</div>
-                      <div className="text-xs text-slate-400">{selectedIdea.Barrier || "N/A"}</div>
-                    </div>
-                    <div>
-                      <div className="text-[9px] text-slate-600 uppercase font-bold mb-1">Strategic Acquirer</div>
-                      <div className="text-xs text-slate-400">{selectedIdea.StrategicAcquirer || "N/A"}</div>
-                    </div>
-                  </div>
-                </section>
-
-                <div className="pt-6 border-t border-slate-800 flex justify-end gap-3">
-                  <button 
-                    onClick={() => selectedIdea && copyToClipboard([selectedIdea])}
-                    className="px-4 py-2 bg-slate-800 text-slate-300 rounded-lg text-xs font-semibold hover:bg-slate-700 transition-colors flex items-center gap-2"
-                  >
-                    <Copy className="w-3.5 h-3.5" /> Copy Row CSV
-                  </button>
-                  <button className="px-4 py-2 bg-slate-800 text-slate-300 rounded-lg text-xs font-semibold hover:bg-slate-700 transition-colors">
-                    Edit Ratings
-                  </button>
-                  <button className="px-4 py-2 bg-blue-600 text-white rounded-lg text-xs font-semibold hover:bg-blue-500 transition-colors flex items-center gap-2">
-                    Open Strategy Dossier <ExternalLink className="w-3 h-3" />
-                  </button>
+              {/* Modal Footer */}
+              <div className="pt-4 md:pt-6 border-t border-slate-800 flex justify-between items-center gap-3 p-4 md:p-6 flex-none bg-slate-900/50">
+                <button onClick={() => selectedIdea && copyToClipboard([selectedIdea])} className="px-4 py-2 bg-slate-800 text-slate-300 rounded-lg text-xs font-semibold hover:bg-slate-700 transition-colors flex items-center gap-2">
+                  <Copy className="w-3.5 h-3.5" /> Copy
+                </button>
+                <div className="flex gap-3">
+                  {isEditing ? (
+                    <>
+                      <button onClick={() => setIsEditing(false)} className="px-4 py-2 text-xs font-bold text-slate-400 hover:text-white">Cancel</button>
+                      <button onClick={handleEditSave} disabled={isSaving} className="px-4 py-2 bg-blue-600 text-white rounded-lg text-xs font-bold hover:bg-blue-500 flex items-center gap-2 disabled:opacity-50">
+                        {isSaving ? <RefreshCcw className="w-3 h-3 animate-spin" /> : <Save className="w-3 h-3" />} SAVE CHANGES
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <button onClick={handleEditOpen} className="px-4 py-2 bg-slate-700 text-slate-200 rounded-lg text-xs font-semibold hover:bg-slate-600 transition-colors">
+                        Edit with JSON
+                      </button>
+                      <button className="px-4 py-2 bg-blue-600 text-white rounded-lg text-xs font-semibold hover:bg-blue-500 flex items-center gap-2">
+                        Open Dossier <ExternalLink className="w-3 h-3" />
+                      </button>
+                    </>
+                  )}
                 </div>
               </div>
             </motion.div>
