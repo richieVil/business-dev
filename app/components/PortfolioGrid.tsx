@@ -25,6 +25,10 @@ interface Idea {
   TAM_Customers: string;
   AvgRevPerCust: string;
   TAM_MUSD: string;
+  DNA_Risk: string;      // New Field
+  DNA_Posture: string;   // New Field
+  DNA_Solo: string;      // New Field
+  Comments: string;      // Fixed Field
   GeometricScore: number;
   SuggestedStatus: string;
   Mismatch: boolean;
@@ -131,6 +135,10 @@ export default function PortfolioGrid({ csvData }: { csvData: string }) {
         TAM_Customers: row.TAM_Customers,
         AvgRevPerCust: row.AvgRevPerCust,
         TAM_MUSD: row.TAM_MUSD,
+        DNA_Risk: row.DNA_Risk || "Venture",
+        DNA_Posture: row.DNA_Posture || "Asset-Light",
+        DNA_Solo: row.DNA_Solo || "No",
+        Comments: row.Comments || "",
         GeometricScore: geoScore,
         SuggestedStatus: suggested,
         Mismatch: (row.SavedStatus || row.Status) !== suggested && (row.SavedStatus || row.Status) !== "DECK-READY"
@@ -289,7 +297,7 @@ export default function PortfolioGrid({ csvData }: { csvData: string }) {
         const updated = { ...existing };
 
         // 1. Update String Fields (Only if present in partial)
-        const stringFields = ["Name", "Archetype", "ProductsServices", "CustomerTypes", "Model", "Barrier", "CapitalReq", "AILeverage", "StrategicAcquirer", "SavedStatus", "TAM_Customers", "AvgRevPerCust", "TAM_MUSD", "Comments"];
+        const stringFields = ["Name", "Archetype", "ProductsServices", "CustomerTypes", "Model", "Barrier", "CapitalReq", "AILeverage", "StrategicAcquirer", "SavedStatus", "TAM_Customers", "AvgRevPerCust", "TAM_MUSD", "DNA_Risk", "DNA_Posture", "DNA_Solo", "Comments"];
         stringFields.forEach(field => {
           if (partial[field] !== undefined) {
             updated[field as keyof Idea] = String(partial[field]);
@@ -327,15 +335,18 @@ export default function PortfolioGrid({ csvData }: { csvData: string }) {
 
 
   const copyToClipboard = async (data: Idea[]) => {
-    const headers = "ID,Name,Archetype,ProductsServices,CustomerTypes,Model,Feasibility,Value,BlueOcean,Physics,Velocity,SavedStatus,TAM_MUSD";
+    const headers = "ID,Name,Archetype,ProductsServices,CustomerTypes,Model,Barrier,CapitalReq,AILeverage,StrategicAcquirer,Feasibility,Value,BlueOcean,Physics,Velocity,SavedStatus,TAM_Customers,AvgRevPerCust,TAM_MUSD,DNA_Risk,DNA_Posture,DNA_Solo,Comments";
     const rows = data.map(i => {
       const name = (i.Name || "").replace(/"/g, '""');
       const desc = (i.ProductsServices || "").replace(/"/g, '""');
       const archetype = (i.Archetype || "");
       const customers = (i.CustomerTypes || "").replace(/"/g, '""');
       const model = (i.Model || "").replace(/"/g, '""');
-      
-      return `${i.ID},"${name}","${archetype}","${desc}","${customers}","${model}",${i.Feasibility},${i.Value},${i.BlueOcean},${i.Physics},${i.Velocity},${i.SavedStatus},${i.TAM_MUSD}`;
+      const barrier = (i.Barrier || "").replace(/"/g, '""');
+      const acquirer = (i.StrategicAcquirer || "").replace(/"/g, '""');
+      const comm = (i.Comments || "").replace(/"/g, '""');
+
+      return `${i.ID},"${name}","${archetype}","${desc}","${customers}","${model}","${barrier}","${i.CapitalReq}","${i.AILeverage}","${acquirer}",${i.Feasibility},${i.Value},${i.BlueOcean},${i.Physics},${i.Velocity},${i.SavedStatus},"${i.TAM_Customers}","${i.AvgRevPerCust}",${i.TAM_MUSD},"${i.DNA_Risk}","${i.DNA_Posture}","${i.DNA_Solo}","${comm}"`;
     }).join('\n');
     
     const fullCsv = `${headers}\n${rows}`;
@@ -640,6 +651,19 @@ export default function PortfolioGrid({ csvData }: { csvData: string }) {
                 <div>
                   <span className="text-[10px] font-mono text-blue-500 font-bold uppercase tracking-widest">{selectedIdea.ID} — {selectedIdea.Archetype}</span>
                   <h2 className="text-lg md:text-2xl font-bold text-white mt-1">{isEditing ? `Editing: ${selectedIdea.Name}` : selectedIdea.Name}</h2>
+                  <div className="flex gap-2 mt-2">
+                    <span className={`text-[9px] px-2 py-0.5 rounded font-bold border ${selectedIdea.DNA_Risk === 'Bootstrapped' ? 'bg-orange-500/10 border-orange-500/30 text-orange-400' : 'bg-blue-500/10 border-blue-500/30 text-blue-400'}`}>
+                      {selectedIdea.DNA_Risk?.toUpperCase()}
+                    </span>
+                    <span className="text-[9px] px-2 py-0.5 rounded font-bold border bg-slate-800 border-slate-700 text-slate-400">
+                      {selectedIdea.DNA_Posture?.toUpperCase()}
+                    </span>
+                    {selectedIdea.DNA_Solo === 'Yes' && (
+                      <span className="text-[9px] px-2 py-0.5 rounded font-bold border bg-purple-500/10 border-purple-500/30 text-purple-400">
+                        SOLO-PRENEUR
+                      </span>
+                    )}
+                  </div>
                 </div>
                 <button onClick={() => router.push('/portfolio')} className="p-2 hover:bg-slate-800 rounded-full transition-colors text-slate-400">
                   <X className="w-5 h-5" />

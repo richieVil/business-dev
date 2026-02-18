@@ -8,10 +8,11 @@ export async function POST(request: Request) {
     
     // Define headers in specific order to match schema
     const headers = [
-      "ID", "Name", "Archetype", "ProductsServices", "CustomerTypes", "Model", 
-      "Barrier", "CapitalReq", "AILeverage", "StrategicAcquirer", 
-      "Feasibility", "Value", "BlueOcean", "Physics", "Velocity", 
-      "SavedStatus", "TAM_Customers", "AvgRevPerCust", "TAM_MUSD", 
+      "ID", "Name", "Archetype", "ProductsServices", "CustomerTypes", "Model",
+      "Barrier", "CapitalReq", "AILeverage", "StrategicAcquirer",
+      "Feasibility", "Value", "BlueOcean", "Physics", "Velocity",
+      "SavedStatus", "TAM_Customers", "AvgRevPerCust", "TAM_MUSD",
+      "DNA_Risk", "DNA_Posture", "DNA_Solo",
       "Comments", "LastUpdated"
     ];
 

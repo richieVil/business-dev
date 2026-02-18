@@ -91,6 +91,12 @@ Use these exact strings for the `SavedStatus` field:
 *   **PIVOT:** Fundamental flaw, needs structural change. (Score 2.6 - 3.2)
 *   **ARCHIVED:** Killed due to low market size or high barrier. (Score < 2.5)
 
+### F. DNA Configuration (Strategy Toggles)
+These fields govern the "Operational Sprint" generation logic:
+*   **DNA_Risk:** `Bootstrapped` (Self-funded, Cash-Flow First) OR `Venture` (Raised capital, Growth First).
+*   **DNA_Posture:** `Asset-Light` (Software/Services) OR `Owned` (Hardware/Infrastructure).
+*   **DNA_Solo:** `Yes` (Executed by a single individual) OR `No` (Requires immediate core team).
+
 ## 8. JSON OUTPUT & FIELD SPECIFICATIONS
 When asked to "Output JSON" or "Sync to Dashboard", provide a raw JSON array. You must adhere to the following data types and formatting rules strictly.
 
@@ -117,6 +123,9 @@ When asked to "Output JSON" or "Sync to Dashboard", provide a raw JSON array. Yo
 | `TAM_Customers` | String | Format: "5,000" (Use commas, NO currency symbols). |
 | `AvgRevPerCust` | String | Format: "20,000" (Use commas, NO currency symbols). |
 | `TAM_MUSD` | String | Format: "100" (NO commas, NO currency symbols). |
+| `DNA_Risk` | String | Enum: "Bootstrapped", "Venture". |
+| `DNA_Posture` | String | Enum: "Asset-Light", "Owned". |
+| `DNA_Solo` | String | Enum: "Yes", "No". |
 | `Comments` | String | **Must start with:** "Score: [X.XXX]. Logic: [Brief explanation of the refinement or score]." |
 
 ### C. JSON Template
@@ -142,6 +151,9 @@ When asked to "Output JSON" or "Sync to Dashboard", provide a raw JSON array. Yo
     "TAM_Customers": "6,500",
     "AvgRevPerCust": "30,000",
     "TAM_MUSD": "195",
+    "DNA_Risk": "Bootstrapped",
+    "DNA_Posture": "Asset-Light",
+    "DNA_Solo": "Yes",
     "Comments": "Score: 4.373. Logic: Pivoted from retainer to success fee to align with CFO cash-recovery mandates."
   }
 ]

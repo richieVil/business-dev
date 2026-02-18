@@ -1,14 +1,7 @@
 
 
 
-clear; Write-Host '```'; Get-ChildItem -Path . -Recurse -Depth 4 | Where-Object { $_.FullName -notmatch '\\(node_modules|\.git|\.next|dist)\\' } | Select-Object -ExpandProperty FullName; Write-Host '```'
-
-
-clear; $path = "strategic-lab-architect/generated-plans"; Get-ChildItem -Path $path -File | ForEach-Object { $file = $_.FullName; Write-Host "--- START OF FILE: $file ---"; Write-Host '```'; Get-Content -LiteralPath $file -Encoding Utf8 | Out-String; Write-Host '```'; Write-Host "--- END OF FILE: $file ---"; Write-Host "" }
-
-
-
-clear; $files = "app/components/DossierEngineV2.tsx"; foreach ($file in $files) { Write-Host "--- START OF FILE: $file ---"; Write-Host '```'; Get-Content -LiteralPath $file -Encoding Utf8 | Out-String; Write-Host '```'; Write-Host "--- END OF FILE: $file ---"; Write-Host "" }
+clear; Write-Host '```'; Get-ChildItem -Path . -Recurse -Depth 4 | Where-Object { $_.FullName -notmatch '\\(node_modules|\.git|\.next|dist)\\' } | Select-Object -ExpandProperty FullName; Write-Host '```'; $path = "strategic-lab-architect/generated-plans"; Get-ChildItem -Path $path -File | ForEach-Object { $file = $_.FullName; Write-Host "--- START OF FILE: $file ---"; Write-Host '```'; Get-Content -LiteralPath $file -Encoding Utf8 | Out-String; Write-Host '```'; Write-Host "--- END OF FILE: $file ---"; Write-Host "" }; $files = "app/components/DossierEngineV2.tsx"; foreach ($file in $files) { Write-Host "--- START OF FILE: $file ---"; Write-Host '```'; Get-Content -LiteralPath $file -Encoding Utf8 | Out-String; Write-Host '```'; Write-Host "--- END OF FILE: $file ---"; Write-Host "" }
 
 
 
