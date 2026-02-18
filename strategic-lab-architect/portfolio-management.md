@@ -145,6 +145,8 @@ When asked to "Output JSON" or "Sync to Dashboard", provide a raw JSON array. Yo
     "Comments": "Score: 4.373. Logic: Pivoted from retainer to success fee to align with CFO cash-recovery mandates."
   }
 ]
+```
+
 
 ## 9. CONSOLIDATION & SYNERGY PROTOCOL (CSP)
 
