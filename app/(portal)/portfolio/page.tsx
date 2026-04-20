@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { Suspense } from 'react';
 import { TrendingUp } from 'lucide-react';
 import PortfolioGrid from '@/app/components/PortfolioGrid';
 
@@ -35,7 +36,9 @@ export default async function PortfolioPage() {
         </header>
 
       <main className="flex-1 flex flex-col min-h-0">
-        <PortfolioGrid csvData={csvData} />
+        <Suspense fallback={<div className="p-10 text-center font-mono text-xs text-slate-500">INITIALIZING DASHBOARD...</div>}>
+          <PortfolioGrid csvData={csvData} />
+        </Suspense>
       </main>
       </div>
     </div>

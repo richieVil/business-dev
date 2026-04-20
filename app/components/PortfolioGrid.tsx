@@ -315,7 +315,7 @@ export default function PortfolioGrid({ csvData }: { csvData: string }) {
           if (partial[field] !== undefined && partial[field] !== null && partial[field] !== "") {
             const num = Number(partial[field]);
             if (!isNaN(num)) {
-              updated[field as keyof Idea] = num;
+              (updated as any)[field] = num;
             }
           }
         });
@@ -547,7 +547,7 @@ export default function PortfolioGrid({ csvData }: { csvData: string }) {
                   <td className="p-4 font-mono text-[11px] text-slate-500 whitespace-nowrap">{idea.ID}</td>
                   <td className="p-4">
                     <div className="font-semibold text-slate-200">{idea.Name}</div>
-                    <div className="text-[11px] text-slate-500 truncate max-w-xs">{idea.ProductsServices || idea.Description}</div>
+                    <div className="text-[11px] text-slate-500 truncate max-w-xs">{idea.ProductsServices}</div>
                   </td>
                   <td className="p-4 text-right font-mono text-xs font-bold text-emerald-400">
                     ${idea.TAM_MUSD}M
