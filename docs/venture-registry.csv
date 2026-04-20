@@ -1,0 +1,2 @@
+ID,Name,SeedSlug,Archetype,OSV,BOI_Total,ROIE_Total,CAL_Level,Status,LastUpdated
+MV-001,Folix,folix,FinTech / RegTech,"A fiscal middleware bridge that converts POS transaction payloads into SAT-compliant invoices for Mexican SMBs via a WhatsApp Identity Network.",4.93,4.8,10,LAB-READY,2026-04-20
