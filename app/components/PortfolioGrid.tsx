@@ -300,7 +300,7 @@ export default function PortfolioGrid({ csvData }: { csvData: string }) {
         const stringFields = ["Name", "Archetype", "ProductsServices", "CustomerTypes", "Model", "Barrier", "CapitalReq", "AILeverage", "StrategicAcquirer", "SavedStatus", "TAM_Customers", "AvgRevPerCust", "TAM_MUSD", "DNA_Risk", "DNA_Posture", "DNA_Solo", "Comments"];
         stringFields.forEach(field => {
           if (partial[field] !== undefined) {
-            updated[field as keyof Idea] = String(partial[field]);
+            (updated as any)[field] = String(partial[field]);
           }
         });
 
