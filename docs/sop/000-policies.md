@@ -25,3 +25,12 @@ Unless specified otherwise in a project-specific SOP, the following thresholds a
 *   **> 4.25:** **GREENLIGHT / LAB-READY**
 *   **3.30 - 4.24:** **REFINE / BUILD MOAT**
 *   **< 3.30:** **PIVOT / ARCHIVE**
+
+---
+
+## 4. The "Champion Mandate" (Anti-Isolation Policy)
+Business-Dev operates as an elite laboratory of architects and consultants. However, technical excellence is a liability without domain grounding. 
+
+**The Rule:** No venture shall move from "Seed" to "Lab-Ready" without the formal identification of an **Industry Champion**. 
+*   **Definition:** An individual or entity with deep domain expertise and a "Micro-Moment of Pain" who agrees to act as the primary validation anchor.
+*   **Role:** The Champion provides the "Grit Data" that prevents the lab from building "Clean-Room" solutions that fail in real-world saturation.

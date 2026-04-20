@@ -22,7 +22,19 @@ Naming begins **ONLY** after the "Strategic Source" is established:
 
 ---
 
-## 4. The 6-Phase Process
+## 4. Visual Identity Archetypes
+To ensure branding consistency across strategic dossiers, every venture must align with one of these standardized visual souls:
+
+| Archetype | Tone | Palette Standard | Key Use Case |
+| :--- | :--- | :--- | :--- |
+| **THE SCANNER** | Stealth / Precision | Dark (#0A0A0A), White Ink, Red Accent (#DC2626). | Early-stage AI or "Black Box" infrastructure. |
+| **THE LEDGER** | Trust / Institutional | White (#FFFFFF), Slate Ink (#0F172A), Cobalt Accent (#2563EB). | FinTech, LegalTech, and Administrative tools. |
+| **THE TERMINAL** | Performance / Dev | Charcoal (#121212), Mint Ink (#10B981), Zinc Muted. | Developer tools and high-velocity automation. |
+| **THE BLUEPRINT** | Engineering / Logic | Navy (#1E293B), White Ink, Cyan Accent (#06B6D4). | Manufacturing, Logistics, and Hardware Strategy. |
+
+---
+
+## 5. The 6-Phase Process
 
 ### Phase 1: Semantic Extraction
 1.  **Action Verbs:** List 10 verbs describing the technical "mechanism."
@@ -60,22 +72,22 @@ Rate the survivors using the **Integer-5 scale** on Memorability, Scalability, V
 
 ---
 
-## 5. The Naming Dossier Output (`05-identity-branding.md`)
+## 6. The Naming Dossier Output (`05-identity-branding.md`)
 The naming exercise must produce a document with these sections:
 1.  **Semantic Extraction:** Action verbs, Emotional gains, and Narrative.
 2.  **The Ideation Pool:** The full list of 20+ initial candidates.
 3.  **Elimination Audit Trail:** A table documenting the death of every candidate (Name | Failure Code | Evidence/Logic).
 4.  **Marketing & Brand Strategy:**
     *   **Tagline Generation:** 3 options for a 3-5 word secondary hook.
-    *   **Visual Identity Direction:** Core color palette (Hex codes) and Typography vibe.
+    *   **Visual Identity Direction:** Assigned **Archetype**, color palette, and Typography vibe.
     *   **Domain Strategy:** Primary vs. Secondary (e.g., `[name].mx` vs `get[name].mx`).
     *   **Brand Hierarchy:** How sub-products are named (e.g., `[Name] Vault`, `[Name] Pulse`).
 5.  **The Conviction Matrix:** Final scoring and Masterbrand selection.
 
 ---
 
-## 6. Definition of Done (DoD)
-- [ ] A Masterbrand is selected via the Conviction Matrix.
+## 7. Definition of Done (DoD)
+- [ ] A Masterbrand and **Visual Archetype** are selected.
 - [ ] The "Collision Report" documents all research failures.
 - [ ] A "Brand Soul" paragraph is written explaining the choice.
 - [ ] Name initialized as the project codename in the directory and TaskBoard.
