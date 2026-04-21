@@ -1,2 +1,43 @@
-ID,Name,SeedSlug,Archetype,OSV,BOI_Total,ROIE_Total,CAL_Level,Status,LastUpdated
-MV-001,Folix,folix,FinTech / RegTech,"A fiscal middleware bridge that converts POS transaction payloads into SAT-compliant invoices for Mexican SMBs via a WhatsApp Identity Network.",4.93,4.8,10,LAB-READY,2026-04-20
+ID,Name,SeedSlug,Sectors,Archetypes,OSV,BOI_Urg,BOI_Stk,BOI_Ease,BOI_Moat,BOI_Reg,BOI_Total,ROIE_Total,CAL_Level,Status,LastUpdated
+MV-001,Folix,folix,"FINTECH, HOSPITALITY","MIDDLEWARE, AGGREGATOR",A fiscal middleware bridge for Mexican SMBs to automate CFDI 4.0 via WhatsApp.,5.0,5.0,4.0,4.0,5.0,4.65,4.8,5.0,LAB-READY,2026-04-20
+V-001,Ops Chief of Staff,ops-orchestrator,LOGISTICS,"THE_LEDGER, MIDDLEWARE",Voice-to-Structured data for construction supervisors to eliminate manual site logging.,4.0,5.0,2.0,5.0,2.0,4.0,3.5,4.0,STRATEGY,2026-04-20
+V-002,The Forfeit,forfeit-referee,"SOCIAL, HEALTH","THE_FORFEIT, THE_NUDGE",Financial consequences bot for goal-tracking via GPS and automated card charges.,5.0,5.0,3.0,3.0,1.0,3.9,4.5,4.5,STRATEGY,2026-04-20
+V-003,Sub Sniper,sub-sniper,"FINTECH, UTILITY",THE_SNIPER,Trial-tracking bot for credit card holders to prevent forgotten renewals.,4.0,5.0,4.0,3.0,1.0,3.8,4.8,3.5,STRATEGY,2026-04-20
+V-004,Brutal Financial Roast,financial-roast,"FINTECH, SOCIAL",THE_ROAST,AI budgeting bot that reduces impulse purchases via personality-driven LLM roasts.,3.0,4.0,4.0,4.0,1.0,3.45,4.2,4.0,STRATEGY,2026-04-20
+V-005,Hotel Concierge,hotel-concierge,HOSPITALITY,"MIDDLEWARE, AGGREGATOR",Digital concierge for independent hotels to reclaim OTA commissions via WhatsApp booking.,3.0,4.0,2.0,5.0,1.0,3.35,3.0,4.5,STRATEGY,2026-04-20
+V-006,Restaurant Order Bot,order-bot,HOSPITALITY,MIDDLEWARE,QR-ordering bot for QSRs to increase turnover via KDS-linked automation.,4.0,3.0,4.0,3.0,1.0,3.2,3.7,4.0,STRATEGY,2026-04-20
+V-007,Med Auditor,med-auditor,HEALTH,"THE_NUDGE, THE_LEDGER",Med-compliance auditor for 100% adherence via persistent accountability nudges.,5.0,5.0,4.0,3.0,1.0,4.05,4.5,3.0,STRATEGY,2026-04-20
+V-008,Parking Spot Pin,parking-pin,UTILITY,THE_LEDGER,Location memory bot for commuters to store GPS coordinates via one tap.,3.0,2.0,5.0,2.0,1.0,2.6,4.8,4.0,STRATEGY,2026-04-20
+V-009,Wishlist Filter,wishlist-filter,"FINTECH, SOCIAL",THE_NUDGE,48-hour cooling-off filter for buyers to reduce impulse purchase regret.,4.0,4.0,5.0,3.0,1.0,3.65,4.0,4.0,STRATEGY,2026-04-20
+V-010,Proof of Presence,proof-presence,SOCIAL,THE_NUDGE,Productivity verification bot for groups to enforce focus via photo-proof.,3.0,3.0,4.0,3.0,1.0,2.95,4.2,4.0,STRATEGY,2026-04-20
+V-011,Unit Converter,unit-converter,UTILITY,MIDDLEWARE,Zero-UI unit converter for professionals to perform instant calculations.,4.0,3.0,5.0,3.0,1.0,3.35,4.8,3.0,STRATEGY,2026-04-20
+V-012,YouTube Summary,tube-summary,UTILITY,THE_LEDGER,Video-intelligence bot to extract key takeaways from links via LLM.,4.0,4.0,4.0,3.0,1.0,3.5,4.0,3.0,STRATEGY,2026-04-20
+V-013,Timezone When,timezone-when,UTILITY,MIDDLEWARE,Mental-math-killer for global teams to schedule syncs via natural language.,3.0,3.0,5.0,3.0,1.0,3.1,4.5,3.0,STRATEGY,2026-04-20
+V-014,Expiry Guard,expiry-guard,"HEALTH, UTILITY","THE_SNIPER, THE_LEDGER",Tracker for document/food expiry via OCR extraction and proactive alerts.,3.0,3.0,3.0,2.0,1.0,2.6,2.0,2.0,STRATEGY,2026-04-20
+V-015,Last Call,last-call,"SOCIAL, HOSPITALITY",THE_SNIPER,Hyper-local flash-deal bot driving urgent foot traffic via 1-hour window offers.,5.0,3.0,4.0,2.0,1.0,3.25,4.0,4.0,STRATEGY,2026-04-20
+V-016,Mystery Meet,mystery-meet,SOCIAL,AGGREGATOR,Social adventure bot coordinating blind public meet-ups for vetted users via geo-randomization.,2.0,2.0,3.0,3.0,1.0,2.25,3.5,3.0,STRATEGY,2026-04-20
+V-017,Spicy Poll,spicy-poll,SOCIAL,THE_NUDGE,Anonymous polling bot for group chats driving engagement via controversial daily questions.,2.0,1.0,5.0,2.0,1.0,2.05,4.5,5.0,STRATEGY,2026-04-20
+V-018,5-Mile Siren,five-mile-siren,SOCIAL,THE_SNIPER,Hyper-local alert bot providing situational awareness on nearby high-urgency events.,4.0,2.0,3.0,3.0,1.0,2.75,3.0,4.0,STRATEGY,2026-04-20
+V-019,Scarcity Sniper,scarcity-sniper,"SOCIAL, UTILITY",THE_SNIPER,Real-time tracking bot providing immediate buy links for high-demand retail items.,5.0,2.0,2.0,4.0,1.0,3.05,3.5,3.0,STRATEGY,2026-04-20
+V-020,Bet on Yourself,self-bet-jar,"SOCIAL, FINTECH",THE_FORFEIT,Financial accountability bot enforcing habit completion via loss aversion and anti-charity.,5.0,4.0,3.0,3.0,1.0,3.6,4.0,4.5,STRATEGY,2026-04-20
+V-021,Voice-to-Admin,voice-billing,"LOGISTICS, FINTECH",MIDDLEWARE,Billing extraction bot parsing field worker audio reports into structured fiscal data.,4.0,5.0,2.0,5.0,2.0,4.0,4.2,3.0,STRATEGY,2026-04-20
+V-022,Site Log Automator,site-logger,LOGISTICS,THE_LEDGER,Hands-free reporting bot capturing construction site updates for digital audit trails.,4.0,4.0,3.0,4.0,2.0,3.65,3.8,4.0,STRATEGY,2026-04-20
+V-023,Route Sync Bot,route-recalibrator,LOGISTICS,MIDDLEWARE,Logistics coordination bot recalibrating delivery routes via real-time audio status.,3.0,4.0,3.0,3.0,1.0,3.1,3.5,3.0,STRATEGY,2026-04-20
+V-024,Safety Report Bot,safety-compliance,LOGISTICS,THE_LEDGER,Compliance monitoring bot preventing OSHA fines via interactive voice checklists.,3.0,5.0,3.0,4.0,5.0,4.0,4.0,3.0,STRATEGY,2026-04-20
+V-025,The Digital Twin,institutional-twin,"LOGISTICS, UTILITY",THE_LEDGER,Knowledge retention bot archiving troubleshooting steps into a searchable knowledge base.,2.0,3.0,2.0,5.0,1.0,2.8,2.5,2.0,STRATEGY,2026-04-20
+V-026,QR Code Gen,qr-generator,UTILITY,MIDDLEWARE,Instant QR generation bot for link sharing via simple WhatsApp text triggers.,2.0,1.0,5.0,2.0,1.0,2.05,5.0,4.0,STRATEGY,2026-04-20
+V-027,Gas Locator,gas-price-map,UTILITY,THE_SNIPER,Savings optimization bot identifying cheapest fuel via geo-fenced API lookups.,3.0,2.0,4.0,3.0,1.0,2.65,3.5,3.0,STRATEGY,2026-04-20
+V-028,Wait Time Crowdsourcer,queue-monitor,"UTILITY, SOCIAL",AGGREGATOR,Real-time queue monitoring bot providing wait times via community-driven status pings.,3.0,2.0,3.0,4.0,1.0,2.7,3.0,4.0,STRATEGY,2026-04-20
+V-029,Grocery Dump,grocery-dump,"UTILITY, SOCIAL",THE_LEDGER,Shared shopping list bot for households to sync needs via text and one-tap clearing.,4.0,2.0,4.0,2.0,1.0,2.7,4.5,4.0,STRATEGY,2026-04-20
+V-030,Commute Status,commute-status,UTILITY,THE_SNIPER,Proactive route monitor for commuters to receive automated status alerts before departure.,3.0,3.0,4.0,3.0,1.0,2.95,3.5,3.0,STRATEGY,2026-04-20
+V-031,Gift Vault,gift-vault,SOCIAL,THE_LEDGER,Gift-idea retention bot to archive random sparks of inspiration via name-tagged text.,2.0,1.0,5.0,2.0,1.0,2.05,5.0,3.0,STRATEGY,2026-04-20
+V-032,PDF Extractor,pdf-extractor,UTILITY,MIDDLEWARE,Document-to-text converter for professionals to extract data from photos via high-precision OCR.,4.0,3.0,4.0,3.0,1.0,3.2,4.0,3.0,STRATEGY,2026-04-20
+V-033,Meal Decider,meal-decider,"HEALTH, SOCIAL",AGGREGATOR,Decision-fatigue killer for couples to select dinner via weighted triage of favorites.,2.0,2.0,5.0,2.0,1.0,2.35,4.8,3.0,STRATEGY,2026-04-20
+V-034,Workout Next,workout-next,HEALTH,THE_NUDGE,Hourly fitness bot for desk workers to maintain mobility via bodyweight micro-challenges.,3.0,2.0,5.0,2.0,1.0,2.6,4.8,4.0,STRATEGY,2026-04-20
+V-035,Air Quality Alert,air-quality,"HEALTH, UTILITY",THE_SNIPER,Respiratory health bot to receive unhealthy AQI alerts via geo-fenced sensor monitoring.,3.0,2.0,4.0,3.0,1.0,2.65,3.5,3.0,STRATEGY,2026-04-20
+V-036,Rain Alert,rain-alert,UTILITY,THE_SNIPER,Hyper-local weather bot to receive umbrella pings via high-precision precipitation forecasting.,3.0,2.0,5.0,3.0,1.0,2.8,4.0,3.0,STRATEGY,2026-04-20
+V-037,Wiki Summary,wiki-summary,UTILITY,THE_LEDGER,Knowledge-triage bot to receive 3-sentence Wikipedia summaries via keyword triggers.,3.0,2.0,5.0,4.0,1.0,3.0,4.0,3.0,STRATEGY,2026-04-20
+V-038,Stock Moon Alert,stock-moon,FINTECH,THE_SNIPER,Price-action alert bot for traders to receive instant target notifications via ticker monitoring.,4.0,3.0,4.0,3.0,1.0,3.2,3.5,3.0,STRATEGY,2026-04-20
+V-039,Local Event Today,local-event,"SOCIAL, UTILITY",AGGREGATOR,Community-discovery bot to receive daily top 3 happenings via geo-specific aggregation.,3.0,2.0,3.0,4.0,1.0,2.7,3.0,4.0,STRATEGY,2026-04-20
+V-040,Random Idea Gen,idea-generator,SOCIAL,THE_NUDGE,Creativity-priming bot for artists/devs to receive daily randomized prompts via morning pings.,2.0,2.0,5.0,3.0,1.0,2.55,4.5,3.0,STRATEGY,2026-04-20
+V-041,Plant Waterer,plant-waterer,UTILITY,THE_NUDGE,Biological maintenance bot for owners to track hydration cycles via species-specific intervals.,2.0,2.0,5.0,3.0,1.0,2.55,4.5,4.0,STRATEGY,2026-04-20

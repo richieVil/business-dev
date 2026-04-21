@@ -12,9 +12,9 @@ The objective of this SOP is to provide a rigorous, repeatable framework for tra
 *   **Anti-Friction Design:** The barrier to entry for the user must be near-zero (e.g., WhatsApp, QR, Webhook).
 
 ### 1.3 Critical to Quality (CTQ) Metrics
-*   **BOI Score:** Must exceed 8.5 for "Lab-Ready" status.
-*   **ROIE Index:** Must exceed 5.0 for implementation greenlight.
-*   **CAL Factor:** Must leverage at least one existing platform or viral transaction loop.
+*   **BOI Score:** Must exceed **4.25** for "Lab-Ready" status.
+*   **ROIE Index:** Must exceed **4.0** for implementation greenlight.
+*   **CAL Factor:** Must score **4.0 or higher** (Leverage).
 
 ---
 
@@ -35,6 +35,12 @@ To prevent "Identity Debt" (naming a project before the Brand Soul is found), us
 Once the OSV and Seed Slug are approved, initialize the "Venture Dossier" directory: `ventures/[seed-slug]/`. 
 
 Per **SOP 003-venture-drafting**, this directory must contain three distinct strategic documents to prevent "skeleton" truncation and ensure technical/economic depth.
+
+### 2.4 Taxonomy Alignment (The Catalog)
+To ensure the portfolio remains searchable and analytically sound, all ventures must be mapped to the standardized taxonomy in `docs/venture-catalog.json`.
+*   **Sectors:** Defines the vertical market and regulatory environment (e.g., `FINTECH`, `LOGISTICS`).
+*   **Archetypes:** Defines the technical/psychological mechanism (e.g., `THE_LEDGER`, `THE_FORFEIT`).
+*   **Rule:** Multiple tags are allowed (comma-separated). No new tags may be used in the registry without first being defined in the master catalog.
 
 ---
 
@@ -137,9 +143,9 @@ Calculate the weighted average of two friction vectors:
 ### 5.2 CAL: Customer Acquisition Leverage
 The CAL determines if the business can grow without a massive sales team.
 
-*   **Level 10: Platform Parasite:** You live inside a marketplace where users *already* have the pain. (e.g., Shopify App Store, Chrome Web Store).
-*   **Level 7: Viral Handshake:** The product sells itself during use. (e.g., A Buyer sees the bot's name on a receipt).
-*   **Level 2: Direct Sales Grind:** You must find, call, and convince users 1-by-1. (Avoid if possible).
+*   **5.0 - Platform Parasite:** You live inside a marketplace where users *already* have the pain. (e.g., Shopify App Store, Chrome Web Store).
+*   **4.0 - Viral Handshake:** The product sells itself during use. (e.g., A Buyer sees the bot's name on a receipt).
+*   **1.0 - Direct Sales Grind:** You must find, call, and convince users 1-by-1. (Avoid if possible).
 
 #### 5.3 Revenue Simulation & The "Variable Cost Floor"
 Before setting prices, you must simulate the "Unit Cost Floor" to prevent margin collapse in high-volume scenarios.
@@ -190,17 +196,18 @@ Every platform play must document mitigations for the following "Catastrophic Fa
 A Venture Definition is officially complete and "Lab-Ready" when the following criteria are met:
 
 ### 7.1 Strategic & Market Validation
-- [ ] **BOI Audit:** The `spec.md` contains a weighted Business Opportunity Index score of > 8.5.
+- [ ] **BOI Audit:** The `spec.md` contains a weighted Business Opportunity Index score of > **4.25**.
 - [ ] **Painkiller Proof:** The "Gateway Filter" confirms the idea is a Mandatory necessity, not an optional efficiency.
+- [ ] **Taxonomy Audit:** Sectors and Archetypes are correctly selected from the `docs/venture-catalog.json` master list.
 - [ ] **Economic Buyer:** The specific persona responsible for the budget is identified and their "Micro-Moment of Pain" is documented.
 
 ### 7.2 Technical & Platform Logic
 - [ ] **The Mechanism (VMC):** The "Black Box" logic (Trigger, Orchestrator, Fulfillment) is mapped as a step-by-step handshake.
-- [ ] **Data Gravity Model:** The decision between a "SaaS Tool" and an "Identity Network" is justified based on CAL potential.
+- [ ] **Data Gravity Model:** The decision between a "SaaS Tool" and an "Identity Network" is justified based on **CAL potential (> 4.0)**.
 - [ ] **Venture Seed:** The directory structure is initialized in `ventures/[seed-slug]/` with a descriptive, functional name.
 
 ### 7.3 Economic & Growth Readiness
-- [ ] **ROIE Validation:** The `spec.md` documents a Return on Implementation Effort score of > 4.0.
+- [ ] **ROIE Validation:** The `spec.md` documents a Return on Implementation Effort score of > **4.0**.
 - [ ] **The "Variable Cost Floor" Audit:** A simulation has been performed documenting the total unit cost (e.g., WhatsApp + Signing + AI fees). "Unlimited" tiers are forbidden if variable costs exceed 20% of the price.
 - [ ] **Unit Economics:** The variable cost vs. target price is documented with a projected > 80% gross margin at the base tier.
 - [ ] **CAL Strategy:** At least one Level 7 or Level 10 distribution channel (Platform Parasite/Viral Loop) is identified and mapped.

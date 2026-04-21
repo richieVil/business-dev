@@ -1,0 +1,19 @@
+{
+  "sectors": {
+    "FINTECH": "Payments, Tax, Invoicing, Budgeting.",
+    "LOGISTICS": "Field Ops, Construction, Supply Chain.",
+    "HOSPITALITY": "Hotels, Restaurants, Bars.",
+    "HEALTH": "Med compliance, Wellness, Bio-tracking.",
+    "UTILITY": "Single-function micro-tools (Converters, OCR).",
+    "SOCIAL": "Game-theory, FOMO, Social competition."
+  },
+  "archetypes": {
+    "MIDDLEWARE": "The bridge between legacy systems and the user interface.",
+    "THE_LEDGER": "Automated record-keeping, audit trails, and site logging.",
+    "THE_SNIPER": "High-urgency monitoring for flash deals or price drops.",
+    "THE_NUDGE": "Accountability through persistent, escalating notifications.",
+    "THE_ROAST": "LLM-driven personality/shame for behavioral change.",
+    "THE_FORFEIT": "Direct financial stakes and loss aversion mechanisms.",
+    "AGGREGATOR": "Centralizing fragmented data into a shared identity network."
+  }
+}
